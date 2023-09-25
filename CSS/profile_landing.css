@@ -1,0 +1,165 @@
+@media screen and (max-width: 1000px){
+    body{
+    width: 100%;}
+}
+    
+
+
+body{
+background-color: #1d1d1d;
+margin: 0px;
+}
+.top-panel .search-bar{
+display: flex;
+justify-content: center;
+}
+
+.top-panel{
+display: flex;
+justify-content:space-between;
+margin-right: 100px;
+margin-top: 0px;
+width: 100%;
+background-color: black;
+}
+
+.search-bar{
+position:relative;
+padding-top: 5px;
+padding-bottom: 10px;
+
+}
+.search-bar input{
+padding-left: 10px;
+border-radius: 10px;
+height: 30px;
+width:700px;
+border: none;
+}
+.search-bar input::placeholder
+{
+color: #dadada;
+font-family: 'Space Mono', monospace;
+}
+.search-bar ion-icon{
+position: absolute;
+height: 30px;
+font-size: 20px;
+color: #6c6c6c;
+}
+.search-bar button{
+background-color: transparent;
+border: none;
+position: absolute;
+right: 20px;
+}
+.user-icons{
+display: flex;
+justify-content: space-between;
+width: 200px;
+padding-top: 10px;
+padding-right: 50px;
+}
+
+#logo{
+color: #dadada;
+font-family: 'Space Mono', monospace;
+margin: 0px;
+font-size: 30px;
+padding-left: 30px;
+padding-top: 5px;
+text-decoration: none;
+}
+ion-icon{
+color: #dadada;
+font-size: 25px;
+}
+#hb{
+padding-top: 10px;
+}
+
+.details{
+display: flex;
+align-items: center;
+margin: 30px;
+flex-direction: column;
+color:white;
+font-size: 30px;
+font-family: 'Space Mono', monospace;
+}
+.details img{
+border-radius: 50%;
+height: 10%;
+width: 10%;
+}
+.profile{
+color: white;
+height: 500px;
+margin-left: 20%;
+margin-right: 20%;
+font-family: 'Space Mono', monospace;
+
+}
+.wl{
+color: white;
+border-right: 1px solid rgb(63, 63, 63);
+border-left: 1px solid rgb(63, 63, 63);
+border-bottom: 1px solid rgb(63, 63, 63);
+border-radius: 5px;
+height: 500px;
+}
+
+.rv
+{
+color: white;
+border-right: 1px solid rgb(63, 63, 63);
+border-left: 1px solid rgb(63, 63, 63);
+border-bottom: 1px solid rgb(63, 63, 63);
+border-radius: 5px;
+height: 500px;
+margin-top: 40px;
+}
+#edit
+{
+background-color: transparent;
+font-family: 'Space Mono', monospace;
+color: white;
+border: none;
+text-decoration: none;
+font-size: 10px;
+position: absolute;
+top: 312px;
+right: 580px;
+}
+#edit:hover
+{
+color: rgb(167, 167, 0);
+}
+
+.trending-card{
+float: left;
+background-color: rgb(22, 22, 22);
+border-radius: 15px;
+width: 20%;
+justify-content: space-between;
+margin:10px;
+transition: box-shadow 0.3s ease;
+height: 70%;
+}
+.trending-card:hover{
+box-shadow: #474747 2px 0px 10px;
+}
+.trending-card-info{
+padding-left: 10px;
+text-align: left;
+color: white;
+font-family: 'Roboto', monospace;
+font-size: 12px;
+}
+.trending-card img{
+    height: 50%;
+    width: 100%;
+   overflow: hidden;
+    border-radius: 15px 15px 0px 0px;
+ 
+}

@@ -1,0 +1,138 @@
+@media screen and (max-width: 1000px){
+    body{
+    width: 100%;}
+}
+    
+
+
+body{
+background-color: #1d1d1d;
+margin: 0px;
+}
+.top-panel .search-bar{
+display: flex;
+justify-content: center;
+}
+
+.top-panel{
+display: flex;
+justify-content:space-between;
+margin-right: 100px;
+margin-top: 0px;
+width: 100%;
+background-color: black;
+}
+
+.search-bar{
+position:relative;
+padding-top: 5px;
+padding-bottom: 10px;
+
+}
+.search-bar input{
+padding-left: 10px;
+border-radius: 10px;
+height: 30px;
+width:700px;
+border: none;
+}
+.search-bar input::placeholder
+{
+color: #dadada;
+font-family: 'Space Mono', monospace;
+}
+.search-bar ion-icon{
+position: absolute;
+height: 30px;
+font-size: 20px;
+color: #6c6c6c;
+}
+.search-bar button{
+background-color: transparent;
+border: none;
+position: absolute;
+right: 20px;
+}
+
+.user-icons{
+display: flex;
+justify-content: space-between;
+width: 200px;
+padding-top: 10px;
+padding-right: 50px;
+}
+
+#logo{
+color: #dadada;
+font-family: 'Space Mono', monospace;
+margin: 0px;
+font-size: 30px;
+padding-left: 30px;
+padding-top: 5px;
+text-decoration: none;
+}
+ion-icon{
+color: #dadada;
+font-size: 25px;
+}
+#hb{
+padding-top: 10px;
+}
+.trending-card{
+float: left;
+background-color: rgb(22, 22, 22);
+border-radius: 15px;
+width: 20%;
+justify-content: space-between;
+margin:10px;
+transition: box-shadow 0.3s ease;
+}
+.trending-card:hover{
+box-shadow: #474747 2px 0px 10px;
+}
+.trending-card-info{
+padding-left: 10px;
+text-align: left;
+color: white;
+font-family: 'Roboto', monospace;
+}
+.trending-card img{
+    height: 30%px;
+    width: 100%;
+   overflow: hidden;
+    border-radius: 15px 15px 0px 0px;
+ 
+}
+.vertical-line{
+border-left: rgb(51, 51, 51) 1px solid;
+height: 90%;
+position: absolute;
+right: 14%;
+}
+.horizontal-lines{
+color: white;
+font-family: "Roboto", monospace;
+position: relative;
+margin-left: 10px;
+margin-top: 2%;
+}
+.horizontal-lines::after{
+content: "";
+height: 1px;
+width: 70%;
+background-color: rgb(49, 49, 49);
+position: absolute;
+margin-left: 20px;
+top: 50%;
+}
+.tn button{
+position: absolute;
+right: 16% ;
+top: 10%;
+background-color: transparent;
+border: none;
+color: white;
+font-family: "Roboto", monospace;
+font-size: 20px;
+}
+
