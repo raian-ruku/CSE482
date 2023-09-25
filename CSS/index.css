@@ -103,6 +103,10 @@ font-family: 'Roboto', monospace;
     border-radius: 15px 15px 0px 0px;
  
 }
+
+.trenddingcards a {
+text-decoration: none;
+}
 .vertical-line{
 border-left: rgb(51, 51, 51) 1px solid;
 height: 90%;
