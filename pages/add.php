@@ -133,13 +133,13 @@
       <input type="text" name="rating" id="rating" placeholder="Rating" />
       <label for="description">Description</label>
       <textarea name="description" id="description" cols="30" rows="10" placeholder="Description"></textarea>
-      <!-- <label for="image" id="drop">
+      <label for="image" id="drop">
         <input type="file" name="image" accept="image/*" id="image" placeholder="Image" hidden />
         <div id="image-viewer">
           <ion-icon name="cloud-upload-outline"></ion-icon>
           <p>Drag & drop here to upload image or click here to upload</p>
         </div>
-      </label> -->
+      </label>
       <input type="submit" value="Add" />
     </form>
   </div>
