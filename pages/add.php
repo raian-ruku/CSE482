@@ -108,7 +108,7 @@
   <div class="add">
 
     <h1>Add Movies/Shows</h1><br>
-    <form action="upload.php" id="add">
+    <form action="upload.php" id="add" method="post">
       <label for="category">Category</label>
       <select name="category" id="category">
         <option value="" disabled selected>Choose category</option>
@@ -140,7 +140,7 @@
           <p>Drag & drop here to upload image or click here to upload</p>
         </div>
       </label>
-      <input type="submit" value="Add" />
+      <input type="submit" value="Add" name="submit">
     </form>
   </div>
 
