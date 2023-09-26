@@ -1,10 +1,10 @@
 <?php
-require_once "database.php"; // Include your database connection code
+require_once "database.php";
 
 if (isset($_POST['delete_user'])) {
     $userName = trim($_POST['user_name']);
 
-    // Prepare and execute the SQL query to delete the user
+
     $sql = "DELETE FROM users WHERE u_name = ?";
     $stmt = mysqli_prepare($con, $sql);
 
