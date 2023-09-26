@@ -104,9 +104,13 @@ font-family: 'Roboto', monospace;
  
 }
 
-.trenddingcards a {
+.trendingcards a {
 text-decoration: none;
 }
+.trendingcards a:visited {
+color: #dadada;
+}
+
 .vertical-line{
 border-left: rgb(51, 51, 51) 1px solid;
 height: 90%;
