@@ -65,11 +65,11 @@ if (!isset($_SESSION["user"])) {
     <div class="user-icons">
       <ion-icon name="person-outline"></ion-icon>
       <ion-icon name="bookmark-outline"></ion-icon>
-      <ion-icon name="log-in-outline"><a href="signin.php"></a></ion-icon>
+      <a href="logout.php"><ion-icon name="log-out-outline"></ion-icon></a>
     </div>
   </div>
   <div class="details">
-    <img src="IMG_20230427_183213.png" alt="profile_image" />
+    <img src="/CSE482/CSS/IMG_20230427_183213.png" alt="profile_image" />
     <p>name</p>
     <a href="/pages/edit_profile.html" id="edit">Edit profile</a>
   </div>
