@@ -15,7 +15,16 @@
 <body>
   <div class="top-panel">
     <a href="/pages/index.html" data-value="FLIXDB" id="logo">FLIXDB</a>
-    <ion-icon name="menu-outline" id="hb"></ion-icon>
+    <ion-icon name="menu-outline" id="hb" onclick="toggleDropdown()"></ion-icon>
+    <div class="dropdown" id="dropdown">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Movies</a></li>
+        <li><a href="#">TV Shows</a></li>
+        <li><a href="#">Genres</a></li>
+        <li><a href="#">Top Rated</a></li>
+      </ul>
+    </div>
     <form action="">
       <div class="search-bar">
         <input type="text" name="search" id="search" placeholder="search" />
@@ -76,6 +85,7 @@
   <script src="/CSE482/JS/logo.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script src="/CSE482/JS/dropdown.js"></script>
 </body>
 
 </html>
