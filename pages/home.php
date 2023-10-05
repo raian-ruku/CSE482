@@ -70,7 +70,7 @@ if (!isset($_SESSION["user"])) {
   </div>
   <div class="details">
     <img src="/CSE482/CSS/IMG_20230427_183213.png" alt="profile_image" />
-    <p>name</p>
+    <p><?php echo $_SESSION['user']; ?></p>
     <a href="/pages/edit_profile.html" id="edit">Edit profile</a>
   </div>
   <div class="profile">
