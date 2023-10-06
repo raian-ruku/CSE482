@@ -34,7 +34,7 @@
       <select name="category" id="category">
         <option value="" disabled selected>Choose category</option>
         <option value="movie">Movie</option>
-        <option value="show">Show</option>
+        <option value="show">Shows</option>
       </select>
       <label for="title">Title</label>
       <input type="text" name="title" id="title" placeholder="Title" />
@@ -54,13 +54,13 @@
       <input type="text" name="rating" id="rating" placeholder="Rating" />
       <label for="description">Description</label>
       <textarea name="description" id="description" cols="30" rows="10" placeholder="Description"></textarea>
-      <label for="image" id="drop">
-        <input type="file" name="image" accept="image/*" id="image" placeholder="Image" hidden />
+   <label for="image" id="drop">
+      <input type="file" name="image" accept="image/*" id="image" style="display: none;" />
         <div id="image-viewer">
-          <ion-icon name="cloud-upload-outline"></ion-icon>
-          <p>Drag & drop here to upload image or click here to upload</p>
+           <ion-icon name="cloud-upload-outline"></ion-icon>
+           <p>Drag & drop here to upload image or click here to upload</p>
         </div>
-      </label>
+  </label>
       <input type="submit" value="Add" name="submit">
     </form>
   </div>

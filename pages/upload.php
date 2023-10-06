@@ -7,6 +7,7 @@ if (isset($_POST["submit"])) {
     $year = $_POST["year"];
     $rating = $_POST["rating"];
     $description = $_POST["description"];
+    $image=$_POST["image"];
 
     // Check if the category is "movie" or "show" and choose the table accordingly
     if (empty($category) or empty($title) or empty($genre) or empty($year) or empty($rating) or empty($description)) {
@@ -21,7 +22,7 @@ if (isset($_POST["submit"])) {
 
     if ($numrows == 0){
     // Prepare and execute the SQL query to insert the data into the chosen table
-    $sql = "INSERT INTO $table (title, genre, year, rating, description) VALUES ('$title','$genre', '$year', '$description', '$rating')";
+    $sql = "INSERT INTO $table (category,title, genre, year, rating, description,image) VALUES ('$category','$title','$genre', '$year', '$rating','$description','$image')";
     // $stmt = mysqli_prepare($con, $sql);
     $result = mysqli_query($con, $sql);
 

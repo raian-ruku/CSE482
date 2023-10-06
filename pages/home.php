@@ -11,6 +11,7 @@ if (!isset($_SESSION["user"])) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <link rel="stylesheet" href="/CSE482/CSS/home.css" />
@@ -22,45 +23,13 @@ if (!isset($_SESSION["user"])) {
     <ion-icon name="menu-outline" id="hb"></ion-icon>
     <form action="home.php" method="POST">
       <div class="search-bar">
-        <input type="text" name="search" id="search" placeholder="search" />
+        <input type="text" name="search" id="lsearch" autocomplete="off" placeholder="search">
         <ion-icon name="search-outline"></ion-icon>
       </div>
+      <div id="searchresult"> </div>
     </form>
-    <table>
-      <?php
-      if (isset($_POST['search'])) {
-        $search = $_POST['search'];
-
-
-        require_once "/CSE482/pages/database.php";
-        $sql = "SELECT * FROM movies WHERE movie_name LIKE '%$search%' UNION SELECT * FROM movies WHERE movie_name LIKE '%$search%'";
-        $result = mysqli_query($con, $sql);
-        if (mysqli_num_rows($result) > 0) {
-          while ($row = mysqli_fetch_array($result)) {
-      ?>
-            <tr?>
-              <th>Name</th>
-              <th>Release Date</th>
-
-
-              <th>Director</th>
-              <th>Cast</th>
-              </tr>
-              <tr>
-                <td><?php echo  $row["movie_name"]; ?></td>
-                <td><?php echo  $row["release_date"]; ?></td>
-                <td><?php echo  $row["director"]; ?></td>
-                <td><?php echo  $row["cast"]; ?></td>
-
-
-              </tr>
-        <?php
-
-          }
-        } else echo "<p id='error'>Nothing related to your search criteria was found. Do you want to submit a request to add your favorite show/movie?</p> <span><button id='errb' onclick=location.href='request.php'>Submit a request</button></span>";
-      }
-        ?>
-    </table>
+    <!-- <div id="searchresult"> </div> -->
+    
 
     <div class="user-icons">
       <ion-icon name="person-outline"></ion-icon>
@@ -81,6 +50,29 @@ if (!isset($_SESSION["user"])) {
   <script src="logo.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script type= "text/javascript">
+    $(document).ready(function(){
+      $("#lsearch").keyup(function(){
+           var input=$(this).val();
+          // alert(input);
+          if(input != "") {
+            $.ajax({
+             url: "livesearch.php",
+             method: "POST",
+             data: {input:input},
+
+            success:function(data){
+              $("#searchresult").html(data);
+            }
+
+            });
+          } else {
+            $("searchresult").css("display","none");
+          }
+      });
+    });
+    </script>
 </body>
 
 </html>
