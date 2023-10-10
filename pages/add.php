@@ -52,6 +52,8 @@
       <input type="text" name="year" id="year" placeholder="Year" />
       <label for="rating">Rating</label>
       <input type="text" name="rating" id="rating" placeholder="Rating" />
+      <label for="trailer_url">Trailer URL</label>
+      <input type="text" name="trailer" id="year" placeholder="trailer url" />
       <label for="description">Description</label>
       <textarea name="description" id="description" cols="30" rows="10" placeholder="Description"></textarea>
    <label for="image" id="drop">

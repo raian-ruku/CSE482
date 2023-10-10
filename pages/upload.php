@@ -8,9 +8,10 @@ if (isset($_POST["submit"])) {
     $rating = $_POST["rating"];
     $description = $_POST["description"];
     $image=$_POST["image"];
+    $trailer=$_POST["trailer"];
 
     // Check if the category is "movie" or "show" and choose the table accordingly
-    if (empty($category) or empty($title) or empty($genre) or empty($year) or empty($rating) or empty($description)) {
+    if (empty($category) or empty($title) or empty($genre) or empty($year) or empty($rating) or empty($trailer) or empty($description)) {
         echo "All fileds are required";
       }
       else{
@@ -22,7 +23,7 @@ if (isset($_POST["submit"])) {
 
     if ($numrows == 0){
     // Prepare and execute the SQL query to insert the data into the chosen table
-    $sql = "INSERT INTO $table (category,title, genre, year, rating, description,image) VALUES ('$category','$title','$genre', '$year', '$rating','$description','$image')";
+    $sql = "INSERT INTO $table (category,title, genre, year, rating, description,image,trailer_url) VALUES ('$category','$title','$genre', '$year', '$rating','$description','$image','$trailer')";
     // $stmt = mysqli_prepare($con, $sql);
     $result = mysqli_query($con, $sql);
 

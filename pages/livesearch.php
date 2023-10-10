@@ -6,8 +6,7 @@ if(isset($_POST['input'])){
     $query= "SELECT * FROM addmovie where title LIKE '{$input}%'";
     $result = mysqli_query($con,$query);
 
-    //<?php
-// Your PHP code to fetch search results from the database
+   
 
 if (mysqli_num_rows($result) > 0) { ?>
     echo '<ul class="search-results">';

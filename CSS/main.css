@@ -1,0 +1,55 @@
+/* CSS styles for movie cards */
+.movie-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 10px; /* Adjust spacing as needed */
+}
+
+.movie-card {
+    /* width: 220px;
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    text-align: center; */
+    width: calc(25% - 20px); /* Adjust card width and spacing as needed */
+    margin: 10px; /* Adjust spacing as needed */
+    padding: 10px;
+    border: 1px solid #ddd; /* Add border for separation */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add shadow for a card effect */
+    text-align: center;
+}
+
+.movie-card img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.movie-card h2 {
+    font-size: 1.2rem;
+    margin: 0;
+    color: aqua;
+}
+
+.movie-card p {
+    font-size: 0.9rem;
+    color: tomato;
+}
+
+.movie-card a {
+    display: block;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.movie-card a:hover {
+    background-color: #0056b3;
+}
