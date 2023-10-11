@@ -48,6 +48,7 @@ if (isset($_SESSION["user"])) {
       $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
       if ($user) {
         if (password_verify($pass, $user["password"])) {
+          setcookie("remember_username", $username, time() + 3600 * 24 * 30, "/");
           session_start();
           $_SESSION["user"] = $username;
           header("location: main.php");
@@ -74,6 +75,9 @@ if (isset($_SESSION["user"])) {
       <form action="">
         <label for="password">Password</label><br>
         <input type="password" name="password" id="" placeholder="enter password" />
+        <br>
+        <input type="checkbox" name="remember_me" class="remember_me" id="remember_me" value="1">
+        <label for="remember_me">Remember Me</label>
         <br>
         <input type="submit" name="login" value="Login">
         <a href="">Forgot Password?</a>

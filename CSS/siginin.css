@@ -113,6 +113,34 @@ border-radius: 10px;
 border: 0px;
 width: 250px;
 }
+
+/* Style the label for the checkbox */
+label[for="remember_me"] {
+    font-weight: bold;
+    margin-left: 10px;
+  }
+  
+  /* Style the checkbox */
+  #remember_me {
+    /* You can customize the styles as per your design */
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    vertical-align: middle;
+  }
+  
+  /* Style the checkbox when it's checked */
+  #remember_me:checked + label[for="remember_me"] {
+    background-color: #007bff; /* Change to your desired color */
+    border-color: #007bff; /* Change to your desired color */
+    color: #fff; /* Change to your desired text color */
+  }
+  
+
+
+
 .signin-form input[type="submit"]{
 width: 100%;
 background-color: rgb(71, 221, 196);
@@ -135,3 +163,11 @@ text-decoration: none;
 .signin-form a:hover{
 color: aqua;
 }
+
+
+  
+  
+  
+  
+  
+  
