@@ -35,7 +35,7 @@
       require_once "database.php";
 
 
-      $sql = "SELECT * FROM movies WHERE id = ?";
+      $sql = "SELECT * FROM addmovie WHERE id = ?";
       $stmt = mysqli_prepare($con, $sql);
 
       if ($stmt) {
@@ -45,7 +45,7 @@
 
         if ($result && mysqli_num_rows($result) > 0) {
           $row = mysqli_fetch_assoc($result);
-          $movieName = $row['movie_name'];
+          $movieName = $row['title'];
           $rating = $row['rating'];
           $popularity = $row['popularity'];
           $releaseDate = $row['release_date'];

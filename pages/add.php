@@ -56,13 +56,13 @@
       <input type="text" name="trailer" id="year" placeholder="trailer url" />
       <label for="description">Description</label>
       <textarea name="description" id="description" cols="30" rows="10" placeholder="Description"></textarea>
-   <label for="image" id="drop">
-      <input type="file" name="image" accept="image/*" id="image" style="display: none;" />
+      <label for="image" id="drop">
+        <input type="file" name="image" accept="image/*" id="image" style="display: none;" />
         <div id="image-viewer">
-           <ion-icon name="cloud-upload-outline"></ion-icon>
-           <p>Drag & drop here to upload image or click here to upload</p>
+          <ion-icon name="cloud-upload-outline"></ion-icon>
+          <p>Drag & drop here to upload image or click here to upload</p>
         </div>
-  </label>
+      </label>
       <input type="submit" value="Add" name="submit">
     </form>
   </div>
@@ -74,7 +74,7 @@
   <script src="/JS/logo.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-  <script src="/JS/drop.js"></script>
+  <script src="CSE482/JS/drop.js"></script>
 </body>
 
 </html>

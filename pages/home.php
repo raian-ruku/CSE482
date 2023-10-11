@@ -29,7 +29,7 @@ if (!isset($_SESSION["user"])) {
       <div id="searchresult"> </div>
     </form>
     <!-- <div id="searchresult"> </div> -->
-    
+
 
     <div class="user-icons">
       <ion-icon name="person-outline"></ion-icon>
@@ -51,28 +51,30 @@ if (!isset($_SESSION["user"])) {
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script type= "text/javascript">
-    $(document).ready(function(){
-      $("#lsearch").keyup(function(){
-           var input=$(this).val();
-          // alert(input);
-          if(input != "") {
-            $.ajax({
-             url: "livesearch.php",
-             method: "POST",
-             data: {input:input},
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#lsearch").keyup(function() {
+        var input = $(this).val();
+        // alert(input);
+        if (input != "") {
+          $.ajax({
+            url: "livesearch.php",
+            method: "POST",
+            data: {
+              input: input
+            },
 
-            success:function(data){
+            success: function(data) {
               $("#searchresult").html(data);
             }
 
-            });
-          } else {
-            $("searchresult").css("display","none");
-          }
+          });
+        } else {
+          $("searchresult").css("display", "none");
+        }
       });
     });
-    </script>
+  </script>
 </body>
 
 </html>
