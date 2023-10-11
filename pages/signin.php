@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION["user"])) {
-  header("location: main.php");
+  header("location: /CSE482/index.php");
 }
 ?>
 
@@ -51,7 +51,7 @@ if (isset($_SESSION["user"])) {
           setcookie("remember_username", $username, time() + 3600 * 24 * 30, "/");
           session_start();
           $_SESSION["user"] = $username;
-          header("location: main.php");
+          header("location: /CSE482/index.php");
           die();
         } else {
           echo "<div class='alert alert-success'>password doesn't match.</div>";

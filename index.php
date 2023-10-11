@@ -2,6 +2,14 @@
   <?php include "/CSE482/CSS/index.css" ?>
 </style>
 
+<?php
+session_start();
+if (!isset($_SESSION["user"])) {
+  header("location: signin.php");
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,32 +56,45 @@
     <div class="trendingcards">
       <?php
       require_once "database.php";
-      $sql = "SELECT * FROM movies";
+      $sql = "SELECT * FROM addmovie";
       $result = mysqli_query($con, $sql);
 
       if ($result && mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
-          $movieName = $row['movie_name'];
+          $movieName = $row['title'];
           $actors = $row['cast'];
           $director = $row['director'];
           $category = $row['category'];
           $releaseDate = $row['release_date'];
           $rating = $row['rating'];
+          $imageData = $row['image'];
+          $imageType = 'image/jpeg';
+
+          // Convert the image data to base64
+          $imageBase64 = base64_encode($imageData);
+
+          // Create a data URI for the image
+          $imageSrc = 'data:' . $imageType . ';base64,' . $imageBase64;
 
           // Create a link for each movie card
-          echo '<a href="/CSE482/pages/movie_details.php?movie_id=' . $row['id'] . '">';
+
           echo '<div class="trending-card">
-                  <img src="/CSS/IMG_20230427_183213.png" alt="trending movie" />
+                 <img src="' . $imageSrc . '" alt="' . $movieName . '" />
+
                   <div class="trending-card-info">
-                    <h3>' . $movieName . '</h3>
+                  
+                     <a href=\'/CSE482/pages/movie_details.php?movie_id=' . $row['id'] . '\'">' . $movieName . '</a>
                     <p>' . $actors . '</p>
                     <p>' . $director . '</p>
                     <p>' . $category . '</p>
                     <p>' . $releaseDate . '</p>
                     <p>' . $rating . '</p>
+                      <button class="like-button" onclick="likeMovie(' . $row['id'] . ')">Like</button>
+        <span id="like-count-' . $row['id'] . '">0</span>
+        <button class="dislike-button" onclick="dislikeMovie(' . $row['id'] . ')">Dislike</button>
+        <span id="dislike-count-' . $row['id'] . '">0</span>
                   </div>
                 </div>';
-          echo '</a>';
         }
       } else {
         echo 'No movies found.';
@@ -86,6 +107,11 @@
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <script src="/CSE482/JS/dropdown.js"></script>
+  <script src='/CSE482/JS/like_dislike.js'></script>
 </body>
+
+<a href="logout.php" class="btn btn-warning">logout </a>
+
+
 
 </html>
