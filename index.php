@@ -103,14 +103,41 @@ if (!isset($_SESSION["user"])) {
     </div>
   </div>
   <div class="vertical-line"></div>
+  <a href="logout.php" class="btn btn-warning">logout </a>
   <script src="/CSE482/JS/logo.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <script src="/CSE482/JS/dropdown.js"></script>
   <script src='/CSE482/JS/like_dislike.js'></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#lsearch").keyup(function() {
+        var input = $(this).val();
+        // alert(input);
+        if (input != "") {
+          $.ajax({
+            url: "livesearch.php",
+            method: "POST",
+            data: {
+              input: input
+            },
+
+            success: function(data) {
+              $("#searchresult").html(data);
+            }
+
+          });
+        } else {
+          $("searchresult").css("display", "none");
+        }
+      });
+    });
+  </script>
 </body>
 
-<a href="logout.php" class="btn btn-warning">logout </a>
+
 
 
 

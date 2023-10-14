@@ -4,6 +4,7 @@ if (isset($_SESSION["user"])) {
   header("location: home.php");
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,9 +12,12 @@ if (isset($_SESSION["user"])) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  <link rel="stylesheet" href="/CSE482/CSS/signin.css" />
+  <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+  <link rel="stylesheet" href="/CSE482/CSS/siginin.css">
 </head>
+
+
 
 <body>
   <div class="top-panel">
@@ -32,6 +36,7 @@ if (isset($_SESSION["user"])) {
     </div>
   </div>
 
+
   <div class="signin-form">
     <?php
     if (isset($_POST["submit"])) {
@@ -43,13 +48,13 @@ if (isset($_SESSION["user"])) {
       $passwordhash = password_hash($password, PASSWORD_DEFAULT);
 
       if (empty($username) or empty($email) or empty($password) or empty($repeatpassword)) {
-        array_push($errors, "All fileds are required");
+        array_push($errors, "All fields are required");
       }
       if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         array_push($errors, "Email is not valid");
       }
       if (strlen($password) < 8) {
-        array_push($errors, "Password must be 8 charecters long");
+        array_push($errors, "Password must be 8 characters long");
       }
       if ($password !== $repeatpassword) {
         array_push($errors, "Password doesn't match");
@@ -70,17 +75,44 @@ if (isset($_SESSION["user"])) {
           $result = mysqli_query($con, $sql);
 
           if ($result) {
-            echo "<div class='alert alert-success'> you are registered successfully</div>";
+            echo "<script>
+             Swal.fire({
+            icon: 'success',
+            title: 'Welcome to FlixDB $username',
+            text: 'You have successfully registered',
+            showCancelButton: true,
+            showCancelButtonColor: 'green',
+            showConfirmButton: true,
+            confirmButtonText: 'login',
+            confirmButtonColor: 'rgb(71, 221, 196)',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = '/CSE482/pages/signin.php'; // Redirect to the home page
+                }
+            });
+            </script>";
           } else {
             die("something went wrong");
           }
         } else {
-          echo "<div class='alert alert-success'>That email already exists!</div>";
+          echo "<script>
+          Swal.fire({
+            icon: 'error',
+            title: 'email already exists',
+            text: 'please try again with another email',
+            showConfirmButton: true,
+            confirmButtonText: 'okay',
+            confirmButtonColor: 'red',
+            
+            
+          });
+          </script>";
         }
       }
     }
-
     ?>
+
+
     <form action="signup.php" method="post" id="form">
       <p data-value="WELCOME TO FLIXDB" id="welcome">WELCOME TO FLIXDB</p>
       <h2>Registration Form</h2>
@@ -96,7 +128,6 @@ if (isset($_SESSION["user"])) {
         <input type="password" name="repeat_password" id="" placeholder="Re-type password" />
         <br>
         <input type="submit" value="Register" name="submit">
-
         <p>already have an account? <a href="signin.php">Sign In</a></p>
       </form>
   </div>
