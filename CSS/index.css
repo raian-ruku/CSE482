@@ -97,7 +97,7 @@ color: white;
 font-family: 'Roboto', monospace;
 }
 .trending-card img{
-    height: 30%px;
+    height: 400px;
     width: 100%;
    overflow: hidden;
     border-radius: 15px 15px 0px 0px;

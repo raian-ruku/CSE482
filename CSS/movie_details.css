@@ -142,5 +142,51 @@ border-radius: 50%;
 height: 50px;
 width: 50px;
 }
+/* Add styles for minimalistic buttons */
+.carousel-btn {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  background-color: #000;
+  color: #fff;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
 
+.carousel-btn:hover {
+  opacity: 1;
+}
+
+.prev-btn {
+  float: left;
+}
+
+.next-btn {
+  float: right;
+}
+
+/* Add these styles for the buttons */
+.carousel-btn {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.7);
+  transition: background 0.3s;
+  z-index: 1;
+}
+
+.carousel-btn:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
 

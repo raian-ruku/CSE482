@@ -48,11 +48,14 @@
           $movieName = $row['title'];
           $rating = $row['rating'];
           $popularity = $row['popularity'];
-          $releaseDate = $row['release_date'];
+          $releaseDate = $row['year'];
           $category = $row['category'];
           $stars = $row['cast'];
           $director = $row['director'];
-          $details = $row['details'];
+          $description = $row['description'];
+          $poster = $row['poster'];
+          $image = $row['image1'];
+          $trailer = $row['trailer_url'];
 
           echo '<div class="sd">
                             <p>' . $movieName . '</p>
@@ -62,11 +65,21 @@
                             </div>
                         </div>
                         <p>Release Date: ' . $releaseDate . '</p>
-                        <img src="/CSS/IMG_20230427_183213.png" alt="images here with carousel" />
+  <div class="image-carousel">
+  <button class="carousel-btn prev-btn" onclick="prevImage()">&lt;</button>
+  <img class="carousel-image" src="' . $poster . '" alt="Poster">
+  <iframe class="carousel-iframe" src="' . $trailer . '" frameborder="0" allowfullscreen></iframe>
+  <img class="carousel-image" src="' . $image . '" alt="Image">
+  <button class="carousel-btn next-btn" onclick="nextImage()">&gt;</button>
+</div>
+
+
+
+  
                         <p>Category: ' . $category . '</p>
                         <p>Stars: ' . $stars . '</p>
                         <p>Director: ' . $director . '</p>
-                        <p>Details: ' . $details . '</p>';
+                        <p>Description: ' . $description . '</p>';
         } else {
           echo 'Movie not found.';
         }
@@ -99,9 +112,11 @@
     </div>
   </div>
 
-  <script src="/JS/logo.js"></script>
+  <script src="/CSE482/JS/logo.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script src="/CSE482/JS/carousel.js"></script>
+
 </body>
 
 </html>

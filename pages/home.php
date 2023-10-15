@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION["user"])) {
-  header("location: signin.php");
+  header("location: /CSE482/pages/signin.php");
 }
 ?>
 

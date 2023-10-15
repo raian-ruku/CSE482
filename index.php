@@ -67,16 +67,7 @@ if (!isset($_SESSION["user"])) {
           $category = $row['category'];
           $releaseDate = $row['release_date'];
           $rating = $row['rating'];
-          $imageData = $row['image'];
-          $imageType = 'image/jpeg';
-
-          // Convert the image data to base64
-          $imageBase64 = base64_encode($imageData);
-
-          // Create a data URI for the image
-          $imageSrc = 'data:' . $imageType . ';base64,' . $imageBase64;
-
-          // Create a link for each movie card
+          $imageSrc = $row['poster'];
 
           echo '<div class="trending-card">
                  <img src="' . $imageSrc . '" alt="' . $movieName . '" />

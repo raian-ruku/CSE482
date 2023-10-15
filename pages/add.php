@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="/CSE482/CSS/add.css" />
+  <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 </head>
 
 <body>
@@ -29,7 +31,7 @@
   <div class="add">
 
     <h1>Add Movies/Shows</h1><br>
-    <form action="upload.php" id="add" method="post">
+    <form action="add.php" id="add" method="post">
       <label for="category">Category</label>
       <select name="category" id="category">
         <option value="" disabled selected>Choose category</option>
@@ -52,29 +54,125 @@
       <input type="text" name="year" id="year" placeholder="Year" />
       <label for="rating">Rating</label>
       <input type="text" name="rating" id="rating" placeholder="Rating" />
-      <label for="trailer_url">Trailer URL</label>
-      <input type="text" name="trailer" id="year" placeholder="trailer url" />
       <label for="description">Description</label>
       <textarea name="description" id="description" cols="30" rows="10" placeholder="Description"></textarea>
-      <label for="image" id="drop">
-        <input type="file" name="image" accept="image/*" id="image" style="display: none;" />
-        <div id="image-viewer">
-          <ion-icon name="cloud-upload-outline"></ion-icon>
-          <p>Drag & drop here to upload image or click here to upload</p>
+      <label for="trailer_url">Trailer URL</label>
+      <input type="text" name="trailer" id="year" placeholder="trailer url" />
+
+      <label for="poster">Poster</label>
+      <input type="text" name="poster" id="poster" placeholder="Poster link" oninput="showPosterPreview()">
+
+      <label for="image">Image</label>
+      <input type="text" name="image" id="image" placeholder="Add another image" oninput="showImagePreview()">
+      <div class="image-view">
+        <label for="image-preview">Poster Preview:</label><br>
+        <div id="image-preview">
+          <img src="" alt="Poster">
         </div>
-      </label>
+        <label for="image-preview2">Image Preview:</label>
+        <div id="image-preview2">
+          <img src="" alt="Image">
+        </div>
+      </div>
       <input type="submit" value="Add" name="submit">
+
     </form>
   </div>
 
   </div>
 
 
+  <?php
 
-  <script src="/JS/logo.js"></script>
+  if (isset($_POST["submit"])) {
+    $category = $_POST["category"];
+    $title = $_POST["title"];
+    $genre = $_POST["genre"];
+    $year = $_POST["year"];
+    $rating = $_POST["rating"];
+    $description = $_POST["description"];
+    $poster = $_POST["poster"];
+    $image = $_POST["image"];
+    $trailer = $_POST["trailer"];
+
+
+    if (empty($category) or empty($title) or empty($genre) or empty($year) or empty($rating) or empty($trailer) or empty($description) or empty($image) or empty($poster)) {
+      echo "<script>
+          Swal.fire({
+            icon: 'warning',
+            title: 'All fields are required',
+            showConfirmButton: true,
+            confirmButtonText: 'okay',
+            confirmButtonColor: 'orange',
+            
+            
+          });
+          </script>";
+    } else {
+
+      require_once "database.php";
+      $table = ($category === "movie") ? "addmovie" : "shows";
+      $query = mysqli_query($con, "SELECT * FROM $table WHERE title='$title'");
+      $numrows = mysqli_num_rows($query);
+
+      if ($numrows == 0) {
+
+        $sql = "INSERT INTO $table (category,title, genre, year, rating, description, trailer_url,  poster, image1) VALUES ('$category','$title','$genre', '$year', '$rating','$description','$trailer','$poster', '$image')";
+
+        $result = mysqli_query($con, $sql);
+
+
+        if ($result) {
+          echo "<script>
+          Swal.fire({
+            icon: 'success',
+            title: '$title ($genre) was added to $category successfully! ',
+            showConfirmButton: true,
+            confirmButtonText: 'okay',
+            confirmButtonColor: 'green',
+            
+            
+          });
+          </script>";
+        } else {
+          echo "<script>
+          Swal.fire({
+            icon: 'error',
+            title: 'Error adding $title to $category' . mysqli_error($con) ,
+            showConfirmButton: true,
+            confirmButtonText: 'okay',
+            confirmButtonColor: 'red',
+            
+            
+          });
+          </script>";
+        }
+      } else {
+        echo
+        "<script>
+          Swal.fire({
+            icon: 'error',
+            title: 'SQL statement preparation failed',
+            showConfirmButton: true,
+            confirmButtonText: 'okay',
+            confirmButtonColor: 'red',
+            
+            
+          });
+          </script>";
+      }
+
+      mysqli_close($con);
+    }
+  }
+
+  ?>
+
+
+  <script src="/CSE482/JS/logo.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-  <script src="CSE482/JS/drop.js"></script>
+  <script src="/CSE482/JS/image_preview.js"></script>
 </body>
 
 </html>
