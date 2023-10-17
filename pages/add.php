@@ -4,9 +4,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="/CSE482/CSS/add.css" />
   <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+  <link rel="stylesheet" href="/CSE482/CSS/add.css" />
+  <link rel="stylesheet" href="/CSE482/CSS/home.css" />
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 </head>
 
@@ -16,11 +18,10 @@
     <ion-icon name="menu-outline" id="hb"></ion-icon>
     <form action="">
       <div class="search-bar">
-        <input type="text" name="search" id="search" placeholder="search" />
-        <button type="submit">
+      <input type="text" name="search" id="lsearch" autocomplete="off" placeholder="search">
           <ion-icon name="search-outline"></ion-icon>
-        </button>
       </div>
+      <div id="searchresult"> </div>
     </form>
     <div class="user-icons">
       <a href="/CSE482/pages/profile_landing.html"><ion-icon name="person-outline"></ion-icon></a>
@@ -52,6 +53,12 @@
       </select>
       <label for="year">Year</label>
       <input type="text" name="year" id="year" placeholder="Year" />
+      <label for="cast">Cast</label>
+      <input type="text" name="cast" id="cast" placeholder="Cast info" />
+      <label for="director">Director</label>
+      <input type="text" name="director" id="director" placeholder="director" />
+      <label for="releasedate">Release Date</label>
+      <input type="date" name="rdate" id="release_date" placeholder="release date" />
       <label for="rating">Rating</label>
       <input type="text" name="rating" id="rating" placeholder="Rating" />
       <label for="description">Description</label>
@@ -89,6 +96,9 @@
     $title = $_POST["title"];
     $genre = $_POST["genre"];
     $year = $_POST["year"];
+    $cast = $_POST["cast"];
+    $director = $_POST["director"];
+    $release_date = $_POST["rdate"];
     $rating = $_POST["rating"];
     $description = $_POST["description"];
     $poster = $_POST["poster"];
@@ -96,7 +106,7 @@
     $trailer = $_POST["trailer"];
 
 
-    if (empty($category) or empty($title) or empty($genre) or empty($year) or empty($rating) or empty($trailer) or empty($description) or empty($image) or empty($poster)) {
+    if (empty($category) or empty($title) or empty($genre) or empty($year) or empty($cast) or empty($director) or empty($release_date) or empty($rating) or empty($trailer) or empty($description) or empty($image) or empty($poster)) {
       echo "<script>
           Swal.fire({
             icon: 'warning',
@@ -117,7 +127,7 @@
 
       if ($numrows == 0) {
 
-        $sql = "INSERT INTO $table (category,title, genre, year, rating, description, trailer_url,  poster, image1) VALUES ('$category','$title','$genre', '$year', '$rating','$description','$trailer','$poster', '$image')";
+        $sql = "INSERT INTO $table (category,title, genre, year, rating, description, trailer_url,  poster, image1, cast, director, release_date) VALUES ('$category','$title','$genre', '$year', '$rating','$description','$trailer','$poster', '$image','$cast','$director','$release_date')";
 
         $result = mysqli_query($con, $sql);
 
@@ -173,6 +183,32 @@
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <script src="/CSE482/JS/image_preview.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#lsearch").keyup(function() {
+        var input = $(this).val();
+        // alert(input);
+        if (input != "") {
+          $.ajax({
+            url: "livesearch.php",
+            method: "POST",
+            data: {
+              input: input
+            },
+
+            success: function(data) {
+              $("#searchresult").html(data);
+            }
+
+          });
+        } else {
+          $("searchresult").css("display", "none");
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>

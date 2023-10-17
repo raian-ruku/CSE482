@@ -16,8 +16,9 @@ if (!isset($_SESSION["user"])) {
   <!-- <link rel="stylesheet" href="/CSE482/CSS/home.css" /> -->
   <link rel="stylesheet" href="/CSE482/JS/logo.js" />
     <title>Home Page</title>
-    <link rel="stylesheet" href="/CSE482/CSS/main.css" />
+    <!-- <link rel="stylesheet" href="/CSE482/CSS/main.css" /> -->
     <link rel="stylesheet" href="/CSE482/CSS/main1.css" />
+    <link rel="stylesheet" href="/CSE482/CSS/home.css" />
 </head>
 <body>
    
@@ -55,7 +56,7 @@ if ($result) {
         $category = $row['category'];
         $description = $row['description'];
         $genre = $row['genre'];
-        $image = $row['image'];
+        $image = $row['image1'];
 
          $trailer = $row['trailer_url'];
 

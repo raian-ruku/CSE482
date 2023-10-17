@@ -2,22 +2,22 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 0 -10px; /* Adjust spacing as needed */
+    margin: 0 -10px; 
 }
 
 .movie-card {
     
-    width: calc(15% - 18px); /* Adjust card width and spacing as needed */
-    margin: 10px; /* Adjust spacing as needed */
+    width: calc(15% - 18px); 
+    margin: 10px; 
     padding: 10px;
-    border: 1px solid #ddd; /* Add border for separation */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add shadow for a card effect */
+    border: 1px solid #ddd; 
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); 
     text-align: center;
     box-sizing: border-box;
 }
 .movie-card img {
-    max-width: 100%; /* Ensure images fit within the card */
-    height: auto; /* Maintain aspect ratio */
+    max-width: 100%; 
+    height: auto; 
 }
 
 .modal {
