@@ -25,7 +25,7 @@
 
 <body>
   <div class="top-panel">
-    <a href="/pages/index.html" data-value="FLIXDB" id="logo">FLIXDB</a>
+    <a href="/index.html" data-value="FLIXDB" id="logo">FLIXDB</a>
     <ion-icon name="menu-outline" id="hb" onclick="toggleDropdown()"></ion-icon>
     <div class="dropdown" id="dropdown">
       <ul>
@@ -38,15 +38,15 @@
     </div>
     <form action="index.php">
       <div class="search-bar">
-      <input type="text" name="search" id="lsearch" autocomplete="off" placeholder="search">
-          <ion-icon name="search-outline"></ion-icon>
+        <input type="text" name="search" id="lsearch" autocomplete="off" placeholder="search">
+        <ion-icon name="search-outline"></ion-icon>
       </div>
       <div id="searchresult" class="search-results"> </div>
     </form>
     <div class="user-icons">
-      <a href="/CSE482/pages/profile_landing.html"><ion-icon name="person-outline"></ion-icon></a>
+      <a href="/CSE482/profile_landing.html"><ion-icon name="person-outline"></ion-icon></a>
       <ion-icon name="bookmark-outline"></ion-icon>
-      <!-- <a href="/CSE482/pages/signin.php"><ion-icon name="log-in-outline"></ion-icon></a> -->
+      <!-- <a href="/CSE482/signin.php"><ion-icon name="log-in-outline"></ion-icon></a> -->
       <a href="pages/logout.php"><ion-icon name="log-out-outline"></ion-icon></a>
     </div>
   </div>
@@ -77,7 +77,7 @@
 
                   <div class="trending-card-info">
                   
-                     <a href=\'/CSE482/pages/movie_details.php?movie_id=' . $row['id'] . '\'">' . $movieName . '</a>
+                     <a href=\'/CSE482/movie_details.php?movie_id=' . $row['id'] . '\'">' . $movieName . '</a>
                      <p>' . $actors . '</p>
                     <p>' . $director . '</p>
                     <p>' . $category . '</p>
@@ -129,5 +129,7 @@
       });
     });
   </script>
+
 </body>
+
 </html>
