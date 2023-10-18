@@ -15,7 +15,7 @@ function showImage(index) {
     }
   });
 
-  if (index === images.length - 1) {
+  if (index === images.length) {
     iframe.style.display = "block";
   } else {
     iframe.style.display = "none";
@@ -25,13 +25,33 @@ function showImage(index) {
 showImage(currentIndex);
 
 function nextImage() {
-  currentIndex = (currentIndex + 1) % (images.length + 1);
-  showImage(currentIndex);
+  currentIndex++;
+  if (currentIndex === 1) {
+    // Show the trailer on the second page
+    showImage(images.length);
+  } else if (currentIndex === 2) {
+    // Show the poster on the third page
+    showImage(0);
+  } else {
+    // Show the image on the first page
+    showImage(0);
+    currentIndex = 0;
+  }
 }
 
 function prevImage() {
-  currentIndex = (currentIndex - 1 + (images.length + 1)) % (images.length + 1);
-  showImage(currentIndex);
+  currentIndex--;
+  if (currentIndex === -1) {
+    // Show the poster on the third page
+    showImage(0);
+    currentIndex = 2;
+  } else if (currentIndex === 0) {
+    // Show the image on the first page
+    showImage(0);
+  } else {
+    // Show the trailer on the second page
+    showImage(images.length);
+  }
 }
 
 // Event listeners for next and previous buttons
