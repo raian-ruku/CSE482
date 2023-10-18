@@ -62,7 +62,7 @@ if (isset($_SESSION["user"])) {
     } else {
       echo "<div class='alert alert-success'>incorrect username </div>";
     }
-  }
+
 
 
 
