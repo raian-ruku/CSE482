@@ -3,10 +3,10 @@
 </style>
 
 <?php
-session_start();
-if (!isset($_SESSION["user"])) {
-  header("location: signin.php");
-}
+// session_start();
+// if (!isset($_SESSION["user"])) {
+//   header("location: signin.php");
+// }
 ?>
 
 
@@ -41,7 +41,7 @@ if (!isset($_SESSION["user"])) {
       <input type="text" name="search" id="lsearch" autocomplete="off" placeholder="search">
           <ion-icon name="search-outline"></ion-icon>
       </div>
-      <div id="searchresult"> </div>
+      <div id="searchresult" class="search-results"> </div>
     </form>
     <div class="user-icons">
       <a href="/CSE482/pages/profile_landing.html"><ion-icon name="person-outline"></ion-icon></a>
@@ -130,9 +130,4 @@ if (!isset($_SESSION["user"])) {
     });
   </script>
 </body>
-
-
-
-
-
 </html>
