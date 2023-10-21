@@ -26,8 +26,8 @@
 <body>
   <div class="top-panel">
     <a href="/index.html" data-value="FLIXDB" id="logo">FLIXDB</a>
-    <ion-icon name="menu-outline" id="hb" onclick="toggleDropdown()"></ion-icon>
-    <div class="dropdown" id="dropdown">
+    <ion-icon name="menu-outline" id="hb" onclick="toggleMenu()"></ion-icon>
+    <div class="fullscreen-menu" id="menu">
       <ul>
         <li><a href="#">Home</a></li>
         <li><a href="pages/main.php">Movies</a></li>
@@ -36,6 +36,7 @@
         <li><a href="#">Top Rated</a></li>
       </ul>
     </div>
+
     <form action="index.php">
       <div class="search-bar">
         <input type="text" name="search" id="lsearch" autocomplete="off" placeholder="search">
