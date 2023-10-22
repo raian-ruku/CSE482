@@ -15,7 +15,9 @@ if (!isset($_SESSION["user"])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="/CSE482/CSS/home.css" /> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
     <link rel="stylesheet" href="/CSE482/JS/logo.js" />
+
     <title>Home Page</title>
     <!-- <link rel="stylesheet" href="/CSE482/CSS/main.css" /> -->
     <link rel="stylesheet" href="/CSE482/CSS/main1.css" />
@@ -85,6 +87,21 @@ if (!isset($_SESSION["user"])) {
                 echo '<span id="like-count-' . $title . '">0</span>';
                 echo '<button class="dislike-button" onclick="dislikeMovie(\'' . $title . '\')">Dislike</button>';
                 echo '<span id="dislike-count-' . $title . '">0</span>';
+
+                // echo '<div class="comment-section">';
+                // echo '<h3>Comments:</h3>';
+                // echo '<div class="comments">';
+                $title = $row['title'];
+
+                if (isset($_SESSION["user"])) {
+                    echo '<form action="comment.php" method="POST">';
+                    echo '<input type="hidden" name="movie_id" value="' . $row['id'] . '">';
+                    echo '<textarea name="comment" placeholder="Add your comment"></textarea>';
+                    echo '<button type="submit">Post Comment</button>';
+                    echo '</form>';
+                } else {
+                    echo '<p><a href="signin.php">Log in</a> to post comments.</p>';
+                }
 
                 echo '</div>';
                 // echo '<a href="' . $trailer . '" target="_blank">Watch Trailer</a>';
