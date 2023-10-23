@@ -36,7 +36,7 @@
       <a href="/CSE482/user_info.php">User Information</a>
       <a href="/CSE482/add.php">Add Movies/Shows</a>
       <a href="#">Delete</a>
-      <a href="#">Comments/Reviews</a>
+      <a href="/CSE482/edit.php">Edit</a>
     </div>
   </div>
   <script src="/CSE482/JS/logo.js"></script>
