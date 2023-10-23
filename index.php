@@ -60,7 +60,7 @@
     <div class="trendingcards">
       <?php
       require_once "database.php";
-      $sql = "SELECT * FROM addmovie";
+      $sql = "SELECT * FROM addmovie WHERE trending = 1 UNION SELECT * FROM shows WHERE trending = 1;";
       $result = mysqli_query($con, $sql);
 
       if ($result && mysqli_num_rows($result) > 0) {

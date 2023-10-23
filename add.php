@@ -81,6 +81,13 @@
           <img src="" alt="Image">
         </div>
       </div>
+      <span>
+        Is it trending?
+        <label for="trending">Yes</label>
+        <input type="radio" name="trending" id="trending" value="1">
+        <label for="trending">No</label>
+        <input type="radio" name="trending" id="trending" value="0">
+      </span>
       <input type="submit" value="Add" name="submit">
 
     </form>
@@ -104,6 +111,7 @@
     $poster = $_POST["poster"];
     $image = $_POST["image"];
     $trailer = $_POST["trailer"];
+    $trending = $_POST["trending"];
 
 
     if (empty($category) or empty($title) or empty($genre) or empty($year) or empty($cast) or empty($director) or empty($release_date) or empty($rating) or empty($trailer) or empty($description) or empty($image) or empty($poster)) {
@@ -127,7 +135,7 @@
 
       if ($numrows == 0) {
 
-        $sql = "INSERT INTO $table (category,title, genre, year, rating, description, trailer_url,  poster, image1, cast, director, release_date) VALUES ('$category','$title','$genre', '$year', '$rating','$description','$trailer','$poster', '$image','$cast','$director','$release_date')";
+        $sql = "INSERT INTO $table (category,title, genre, year, rating, description, trailer_url,  poster, image1, cast, director, release_date, trending) VALUES ('$category','$title','$genre', '$year', '$rating','$description','$trailer','$poster', '$image','$cast','$director','$release_date', $trending)";
 
         $result = mysqli_query($con, $sql);
 
