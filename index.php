@@ -25,7 +25,7 @@
 
 <body>
   <div class="top-panel">
-    <a href="/index.html" data-value="FLIXDB" id="logo">FLIXDB</a>
+    <a href="/CSE482/index.php" data-value="FLIXDB" id="logo">FLIXDB</a>
     <ion-icon name="menu-outline" id="hb" onclick="toggleMenu()"></ion-icon>
     <div class="fullscreen-menu" id="menu">
       <ul>
@@ -53,14 +53,14 @@
   </div>
   <div class="trending">
     <div class="tn">
-      <h2 class="horizontal-lines">Trending Now</h2>
+      <h2 class="horizontal-lines">Trending Movies</h2>
       <button>View All</button>
     </div>
     <br />
     <div class="trendingcards">
       <?php
       require_once "database.php";
-      $sql = "SELECT * FROM addmovie WHERE trending = 1 UNION SELECT * FROM shows WHERE trending = 1;";
+      $sql = "SELECT * FROM addmovie WHERE trending = 1";
       $result = mysqli_query($con, $sql);
 
       if ($result && mysqli_num_rows($result) > 0) {
@@ -97,7 +97,58 @@
       ?>
     </div>
   </div>
-  <div class="vertical-line"></div>
+  <div class="trending2">
+    <div class="tn2">
+      <h2 class="horizontal-lines">Trending Shows</h2>
+      <button>View All</button>
+    </div>
+    <br />
+
+
+
+
+    <div class="trendingcards">
+      <?php
+      require_once "database.php";
+      $sql = "SELECT * FROM shows WHERE trending = 1";
+      $result = mysqli_query($con, $sql);
+
+      if ($result && mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+          $movieName = $row['title'];
+          $actors = $row['cast'];
+          $director = $row['director'];
+          $category = $row['category'];
+          $releaseDate = $row['release_date'];
+          $rating = $row['rating'];
+          $imageSrc = $row['poster'];
+
+          echo '<div class="trending-card">
+                 <img src="' . $imageSrc . '" alt="' . $movieName . '" />
+
+                  <div class="trending-card-info">
+                  
+                     <a alt="' . $movieName . '" href=\'/CSE482/show_details.php?show_id=' . $row['id'] . '\'">' . $movieName . '</a>
+                     <p>' . $actors . '</p>
+                    <p>' . $director . '</p>
+                    <p>' . $category . '</p>
+                    <p>' . $releaseDate . '</p>
+                    <p>' . $rating . '</p>
+                      <button class="like-button" onclick="likeMovie(' . $row['id'] . ')">Like</button>
+        <span id="like-count-' . $row['id'] . '">0</span>
+        <button class="dislike-button" onclick="dislikeMovie(' . $row['id'] . ')">Dislike</button>
+        <span id="dislike-count-' . $row['id'] . '">0</span>
+                  </div>
+                </div>';
+        }
+      } else {
+        echo 'No movies found.';
+      }
+      ?>
+    </div>
+  </div>
+
+
   <!-- <a href="logout.php" class="btn btn-warning">logout </a> -->
   <script src="/CSE482/JS/logo.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

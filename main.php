@@ -27,7 +27,7 @@ if (!isset($_SESSION["user"])) {
 <body>
 
     <div class="top-panel">
-        <a href="/index.html" data-value="FLIXDB" id="logo">FLIXDB</a>
+        <a href="/CSE482/index.php" data-value="FLIXDB" id="logo">FLIXDB</a>
         <ion-icon name="menu-outline" id="hb"></ion-icon>
         <form action="main.php" method="POST">
             <div class="search-bar">
