@@ -70,3 +70,48 @@
 .movie-card a:hover {
     background-color: #0056b3;
 }
+
+.movie-card textarea,
+.movie-card button[type="submit"] {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: none;
+}
+
+.movie-card textarea {
+    height: 100px;
+}
+
+.movie-card button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.movie-card button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .movie-card {
+        width: calc(33.33% - 20px);
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .movie-card-container {
+        margin: 0;
+    }
+    .movie-card {
+        width: calc(50% - 20px);
+        margin: 10px 0;
+    }
+}

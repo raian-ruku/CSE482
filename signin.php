@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION["user"])) {
-  header("location: /CSE482/pages/admin_panel.php");
+  header("location: /CSE482/admin_panel.php");
 }
 ?>
 
@@ -51,17 +51,19 @@ if (isset($_SESSION["user"])) {
           setcookie("remember_username", $username, time() + 3600 * 24 * 30, "/");
           session_start();
           $_SESSION["user"] = $username;
-          header("location: /CSE482/pages/admin_panel.php");
+          header("location: /CSE482/admin_panel.php");
           die();
         } else {
           echo "<div class='alert alert-success'>password doesn't match.</div>";
         }
-      } else {
-        echo "<div class='alert alert-success'>password doesn't match.</div>";
-      }
+      // } else {
+      //   echo "<div class='alert alert-success'>password doesn't match.</div>";
+      // }
+      
     } else {
       echo "<div class='alert alert-success'>incorrect username </div>";
     }
+  }
 
 
 
@@ -75,7 +77,7 @@ if (isset($_SESSION["user"])) {
       <p data-value="WELCOME TO FLIXDB" id="welcome">WELCOME TO FLIXDB</p>
       <label for="name">Username</label><br>
       <input type="text" name="username" id="" placeholder="enter username" /><br>
-      <form action="">
+      <!-- <form action=""> -->
         <label for="password">Password</label><br>
         <input type="password" name="password" id="" placeholder="enter password" />
         <br>

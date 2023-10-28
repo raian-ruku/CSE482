@@ -179,3 +179,21 @@ top: 30%;
     width: 100%;
     height: auto;
 }
+
+@media screen and (max-width: 1000px) {
+    .top-panel {
+        margin-right: 0; /* Adjust the right margin */
+    }
+
+    .search-bar input {
+        width: 100%; /* Allow the input to take the full width */
+    }
+
+    .user-icons {
+        padding-right: 10px; /* Adjust the right padding */
+    }
+
+    #edit {
+        right: 10px; /* Adjust the position */
+    }
+}
