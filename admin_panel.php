@@ -30,7 +30,7 @@
     </div>
   </div>
   <div class="profile">
-    <img src="/CSS/IMG_20230427_183213.png" alt="admin_image" />
+    <img src="" alt="admin_image" />
     <p>name</p>
     <div class="links">
       <a href="/CSE482/user_info.php">User Information</a>

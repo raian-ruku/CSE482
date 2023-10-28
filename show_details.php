@@ -111,7 +111,7 @@
     <p>User Reviews</p>
     <div class="review">
       <div class="review-items">
-        <img src="/CSS/IMG_20230427_183213.png" alt="user_image" />
+        <img src="" alt="user_image" />
       </div>
       <div class="review-items">
         <p>Name</p>

@@ -56,4 +56,4 @@ function prevImage() {
 
 
 nextBtn.addEventListener("click", nextImage);
-prevBtn.addEventListener("click", prevImage);x
+prevBtn.addEventListener("click", prevImage);
