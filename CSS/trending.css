@@ -241,31 +241,44 @@ font-size: 20px;
   
 }
 
-
-
-.trending2{
-
-position: absolute;
-top: 800px;
-width: 100%;}
-
-.tn2 button{
-position: absolute;
-right: 16% ;
-top: 3%;
-background-color: transparent;
-border: none;
-color: white;
-font-family: "Roboto", monospace;
-font-size: 20px;
+table{
+color:white
 }
 
 
-.tn2 button:hover{
-color: rgb(255, 218, 144);
+.movie-table {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  background-color: rgb(22, 22, 22);
+  border-radius: 15px;
+  width: 100%;
+  justify-content: space-between;
+  box-shadow: #474747 2px 0px 10px;
 }
 
-table img{
-height: 200px;
-width: 200px;
+.movie-details {
+  padding-left: 10px;
+  text-align: left;
+  color: white;
+  font-family: 'Roboto', monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+table img {
+  height: 400px;
+  width: 400px;
+  overflow: hidden;
+  border-radius: 15px 0 0 15px;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.like-button,
+.dislike-button {
+  margin-top: 10px;
 }

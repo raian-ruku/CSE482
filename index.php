@@ -54,7 +54,7 @@
   <div class="trending">
     <div class="tn">
       <h2 class="horizontal-lines">Trending Movies</h2>
-      <button>View All</button>
+      <button onclick="window.location.href='/CSE482/trending_movies.php'">View All</button>
     </div>
     <br />
     <div class="trendingcards">
@@ -100,14 +100,14 @@
   <div class="trending2">
     <div class="tn2">
       <h2 class="horizontal-lines">Trending Shows</h2>
-      <button>View All</button>
+      <button onclick="window.location.href='/CSE482/trending_shows.php'">View All</button>
     </div>
     <br />
 
 
 
 
-    <div class="trendingcards">
+    <div class=" trendingcards">
       <?php
       require_once "database.php";
       $sql = "SELECT * FROM shows WHERE trending = 1";
