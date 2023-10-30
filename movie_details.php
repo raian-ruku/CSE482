@@ -7,13 +7,22 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="/CSE482/CSS/movie_details.css" />
-  <link rel="stylesheet" href="/CSE482/CSS/home.css" />
+
 </head>
 
 <body>
   <div class="top-panel">
     <a href="/CSE482/index.php" data-value="FLIXDB" id="logo">FLIXDB</a>
-    <ion-icon name="menu-outline" id="hb"></ion-icon>
+    <ion-icon name="menu-outline" id="hb" onclick="toggleMenu()"></ion-icon>
+    <div class="fullscreen-menu" id="menu">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="/CSE482/movies.php">Movies</a></li>
+        <li><a href="/CSE482/shows.php">TV Shows</a></li>
+        <li><a href="#">Genres</a></li>
+        <li><a href="#">Top Rated</a></li>
+      </ul>
+    </div>
     <form action="">
       <div class="search-bar">
         <input type="text" name="search" id="lsearch" autocomplete="off" placeholder="search">
@@ -118,6 +127,7 @@
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <script src="/CSE482/JS/carousel.js"></script>
+  <script src="/CSE482/JS/dropdown.js"></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script type="text/javascript">

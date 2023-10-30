@@ -13,7 +13,16 @@
 <body>
   <div class="top-panel">
     <a href="/CSE482/index.php" data-value="FLIXDB" id="logo">FLIXDB</a>
-    <ion-icon name="menu-outline" id="hb"></ion-icon>
+    <ion-icon name="menu-outline" id="hb" onclick="toggleMenu()"></ion-icon>
+    <div class="fullscreen-menu" id="menu">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="/CSE482/movies.php">Movies</a></li>
+        <li><a href="/CSE482/shows.php">TV Shows</a></li>
+        <li><a href="#">Genres</a></li>
+        <li><a href="#">Top Rated</a></li>
+      </ul>
+    </div>
     <form action="">
       <div class="search-bar">
         <input type="text" name="search" id="lsearch" autocomplete="off" placeholder="search" />
@@ -62,6 +71,7 @@
           $poster
             = $row['poster'];
           $image = $row['image1'];
+          $genre = $row['genre'];
           $trailer = $row['trailer_url'];
           echo '
       <div class="sd">
@@ -88,7 +98,7 @@
           &gt;
         </button>
       </div>
-
+      <p>Genre: ' . $genre . '</p>
       <p>Category: ' . $category . '</p>
       <p>Stars: ' . $stars . '</p>
       <p>Director: ' . $director . '</p>
@@ -127,6 +137,7 @@
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <script src="/CSE482/JS/carousel.js"></script>
+  <script src="/CSE482/JS/dropdown.js"></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script type="text/javascript">

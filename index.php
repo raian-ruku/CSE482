@@ -30,7 +30,7 @@ if (!isset($_SESSION["user"])) {
     <div class="fullscreen-menu" id="menu">
       <ul>
         <li><a href="#">Home</a></li>
-        <li><a href="main.php">Movies</a></li>
+        <li><a href="pages/main.php">Movies</a></li>
         <li><a href="#">TV Shows</a></li>
         <li><a href="#">Genres</a></li>
         <li><a href="#">Top Rated</a></li>
