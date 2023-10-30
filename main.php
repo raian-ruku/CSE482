@@ -60,7 +60,7 @@ if (!isset($_SESSION["user"])) {
                 $category = $row['category'];
                 $description = $row['description'];
                 $genre = $row['genre'];
-                $image = $row['image1'];
+                $image = $row['poster'];
 
                 $trailer = $row['trailer_url'];
 
@@ -75,9 +75,9 @@ if (!isset($_SESSION["user"])) {
 
                 // Display movie poster, title, description, genre, and a "View Details" link
                 echo '<div class="movie-card">';
-                echo '<img src="data:' . $imageType . ';base64,' . $imageBase . '" alt="' . $title . '">';
+               // echo '<img src="data:' . $imageType . ';base64,' . $imageBase . '" alt="' . $title . '">';
                 //echo '<img src="data:image/JPG;base64,' . $imageBase . '" alt="' . $title . '">';
-                // echo '<img src="' . $image . '" alt="' . $title . '">';
+                 echo '<img src="' . $image . '" alt="' . $title . '">';
                 echo '<h2>' . $title . '</h2>';
                 echo '<p>' . $description . '</p>';
                 echo '<p>Genre: ' . $genre . '</p>';
@@ -105,7 +105,7 @@ if (!isset($_SESSION["user"])) {
 
                 echo '</div>';
                 // echo '<a href="' . $trailer . '" target="_blank">Watch Trailer</a>';
-                //echo '<a href=" " target="_blank">View Details</a>'; // Open trailer in a new tab
+                //echo '<a href=" " target="_blank">View Details</a>'; 
                 echo '</div>';
             }
         } else {

@@ -3,10 +3,10 @@
 </style>
 
 <?php
-// session_start();
-// if (!isset($_SESSION["user"])) {
-//   header("location: signin.php");
-// }
+session_start();
+if (!isset($_SESSION["user"])) {
+  header("location: signin.php");
+}
 ?>
 
 
@@ -30,7 +30,7 @@
     <div class="fullscreen-menu" id="menu">
       <ul>
         <li><a href="#">Home</a></li>
-        <li><a href="pages/main.php">Movies</a></li>
+        <li><a href="main.php">Movies</a></li>
         <li><a href="#">TV Shows</a></li>
         <li><a href="#">Genres</a></li>
         <li><a href="#">Top Rated</a></li>
@@ -45,10 +45,10 @@
       <div id="searchresult" class="search-results"> </div>
     </form>
     <div class="user-icons">
-      <a href="/CSE482/profile_landing.html"><ion-icon name="person-outline"></ion-icon></a>
+      <a href="/CSE482/home.php"><ion-icon name="person-outline"></ion-icon></a>
       <ion-icon name="bookmark-outline"></ion-icon>
       <!-- <a href="/CSE482/signin.php"><ion-icon name="log-in-outline"></ion-icon></a> -->
-      <a href="pages/logout.php"><ion-icon name="log-out-outline"></ion-icon></a>
+      <a href="logout.php"><ion-icon name="log-out-outline"></ion-icon></a>
     </div>
   </div>
   <div class="trending">
@@ -73,30 +73,43 @@
           $rating = $row['rating'];
           $imageSrc = $row['poster'];
 
-          echo '<div class="trending-card">
-                 <img src="' . $imageSrc . '" alt="' . $movieName . '" />
+          echo '<div class="trending-card">';
+            echo  '<img src="' . $imageSrc . '" alt="' . $movieName . '" />';
 
-                  <div class="trending-card-info">
+            echo'<div class="trending-card-info">';
                   
-                     <a href=\'/CSE482/movie_details.php?movie_id=' . $row['id'] . '\'">' . $movieName . '</a>
-                     <p>' . $actors . '</p>
-                    <p>' . $director . '</p>
-                    <p>' . $category . '</p>
-                    <p>' . $releaseDate . '</p>
-                    <p>' . $rating . '</p>
-                      <button class="like-button" onclick="likeMovie(' . $row['id'] . ')">Like</button>
-        <span id="like-count-' . $row['id'] . '">0</span>
-        <button class="dislike-button" onclick="dislikeMovie(' . $row['id'] . ')">Dislike</button>
-        <span id="dislike-count-' . $row['id'] . '">0</span>
-                  </div>
-                </div>';
-        }
+            echo'<a href=\'/CSE482/movie_details.php?movie_id=' . $row['id'] . '\'">' . $movieName . '</a>';
+            echo '<p>' . $actors . '</p>';
+            echo '<p>' . $director . '</p>';
+            echo '<p>' . $category . '</p>';
+            echo '<p>' . $releaseDate . '</p>';
+            echo '<p>' . $rating . '</p>';
+            echo '<button class="like-button" onclick="likeMovie(' . $row['id'] . ')">Like</button>';
+            echo '<span id="like-count-' . $row['id'] . '">0</span>';
+            echo '<button class="dislike-button" onclick="dislikeMovie(' . $row['id'] . ')">Dislike</button>';
+            echo '<span id="dislike-count-' . $row['id'] . '">0</span>';
+            
+            $title = $row['title'];
+
+                if (isset($_SESSION["user"])) {
+                    echo '<form action="comment.php" method="POST">';
+                    echo '<input type="hidden" name="movie_id" value="' . $row['id'] . '">';
+                    echo '<textarea name="comment" placeholder="Add your comment"></textarea>';
+                    echo '<button type="submit">Post Comment</button>';
+                    echo '</form>';
+                } else {
+                    echo '<p><a href="signin.php">Log in</a> to post comments.</p>';
+                }
+                 echo '</div>';
+                echo '</div>';
+         }
       } else {
         echo 'No movies found.';
       }
       ?>
     </div>
   </div>
+  <br> 
   <div class="trending2">
     <div class="tn2">
       <h2 class="horizontal-lines">Trending Shows</h2>
@@ -123,23 +136,36 @@
           $rating = $row['rating'];
           $imageSrc = $row['poster'];
 
-          echo '<div class="trending-card">
-                 <img src="' . $imageSrc . '" alt="' . $movieName . '" />
+          echo '<div class="trending-card">';
 
-                  <div class="trending-card-info">
+          echo '<img src="' . $imageSrc . '" alt="' . $movieName . '" />';
+
+          echo '<div class="trending-card-info">';
                   
-                     <a alt="' . $movieName . '" href=\'/CSE482/show_details.php?show_id=' . $row['id'] . '\'">' . $movieName . '</a>
-                     <p>' . $actors . '</p>
-                    <p>' . $director . '</p>
-                    <p>' . $category . '</p>
-                    <p>' . $releaseDate . '</p>
-                    <p>' . $rating . '</p>
-                      <button class="like-button" onclick="likeMovie(' . $row['id'] . ')">Like</button>
-        <span id="like-count-' . $row['id'] . '">0</span>
-        <button class="dislike-button" onclick="dislikeMovie(' . $row['id'] . ')">Dislike</button>
-        <span id="dislike-count-' . $row['id'] . '">0</span>
-                  </div>
-                </div>';
+          echo '<a alt="' . $movieName . '" href=\'/CSE482/show_details.php?show_id=' . $row['id'] . '\'">' . $movieName . '</a>';
+          echo '<p>' . $actors . '</p>';
+          echo '<p>' . $director . '</p>';
+          echo '<p>' . $category . '</p>';
+          echo '<p>' . $releaseDate . '</p>';
+          echo '<p>' . $rating . '</p>';
+          echo '<button class="like-button" onclick="likeMovie(' . $row['id'] . ')">Like</button>';
+          echo '<span id="like-count-' . $row['id'] . '">0</span>';
+          echo '<button class="dislike-button" onclick="dislikeMovie(' . $row['id'] . ')">Dislike</button>';
+          echo '<span id="dislike-count-' . $row['id'] . '">0</span>';
+
+          $title = $row['title'];
+
+          if (isset($_SESSION["user"])) {
+              echo '<form action="showcomment.php" method="POST">';
+              echo '<input type="hidden" name="show_id" value="' . $row['id'] . '">';
+              echo '<textarea name="comment" placeholder="Add your comment"></textarea>';
+              echo '<button type="submit">Post Comment</button>';
+              echo '</form>';
+          } else {
+              echo '<p><a href="signin.php">Log in</a> to post comments.</p>';
+          }
+              echo '</div>';
+              echo '</div>';
         }
       } else {
         echo 'No movies found.';

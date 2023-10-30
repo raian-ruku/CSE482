@@ -145,7 +145,6 @@ top: 30%;
     color:tomato;
 }
 
-/* Add this CSS to your stylesheet or in a <style> tag in your HTML */
 
 .search-results {
     list-style: none;
@@ -182,18 +181,18 @@ top: 30%;
 
 @media screen and (max-width: 1000px) {
     .top-panel {
-        margin-right: 0; /* Adjust the right margin */
+        margin-right: 0; 
     }
 
     .search-bar input {
-        width: 100%; /* Allow the input to take the full width */
+        width: 100%; 
     }
 
     .user-icons {
-        padding-right: 10px; /* Adjust the right padding */
+        padding-right: 10px; 
     }
 
     #edit {
-        right: 10px; /* Adjust the position */
+        right: 10px; 
     }
 }
