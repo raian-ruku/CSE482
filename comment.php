@@ -18,15 +18,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['comment']) && isset($_
     if (mysqli_query($con, $insertQuery)) {
         echo '<script type="text/javascript">
                 swal("Success", "Your comment has been posted!", "success").then(function() {
-                    window.location.href = "main.php"; 
+                    window.location.href = "movies.php"; 
               </script>';
-         header("location: main.php");
+         header("location: movies.php");
     } else {
         echo "Error: " . mysqli_error($con);
     }
 
     mysqli_close($con);
 } else {
-    header("location: main.php");
+    header("location: movies.php");
 }
 ?>

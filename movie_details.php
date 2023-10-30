@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (!isset($_SESSION["user"])) {
+  header("location: signin.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,10 +37,11 @@
       <div id="searchresult"> </div>
     </form>
     <div class="user-icons">
-      <a href="/CSE482/profile_landing.html"><ion-icon name="person-outline"></ion-icon></a>
+      <a href="/CSE482/home.php"><ion-icon name="person-outline"></ion-icon></a>
       <ion-icon name="bookmark-outline"></ion-icon>
       <!-- <a href="/signin.html"><ion-icon name="log-in-outline"></ion-icon></a> -->
       <a href="logout.php"><ion-icon name="log-out-outline"></ion-icon></a>
+    
     </div>
   </div>
 
@@ -58,7 +65,7 @@
           $row = mysqli_fetch_assoc($result);
           $movieName = $row['title'];
           $rating = $row['rating'];
-          $popularity = $row['popularity'];
+          //$popularity = $row['popularity'];
           $releaseDate = $row['release_date'];
           $category = $row['category'];
           $stars = $row['cast'];
@@ -72,7 +79,7 @@
                             <p>' . $movieName . '</p>
                             <div class="rp">
                                 <p>Rating: ' . $rating . '</p>
-                                <p>Popularity: ' . $popularity . '</p>
+                                
                             </div>
                         </div>
                         <p>Release Date: ' . $releaseDate . '</p>
@@ -109,12 +116,29 @@
 
   <div class="reviews">
     <p>User Reviews</p>
+    <?php
+    $title = $row['title'];
+  //  session_start();
+   $title = $row['title'];
+
+                if (isset($_SESSION["user"])) {
+                    echo '<form action="comment.php" method="POST">';
+                    echo '<input type="hidden" name="movie_id" value="' . $row['id'] . '">';
+                    echo '<textarea name="comment" placeholder="Add your comment"></textarea> <br>';
+                    echo '<button type="submit">Post Comment</button>';
+                    echo '</form>';
+                } else {
+                    echo '<p><a href="signin.php">Log in</a> to post comments.</p>';
+                }
+  session_abort();
+?>
+
     <div class="review">
       <div class="review-items">
         <img src="" alt="user_image" />
       </div>
       <div class="review-items">
-        <p>Name</p>
+      <p>Name: </p>
       </div>
 
       <div class="review-items">

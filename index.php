@@ -89,17 +89,7 @@ if (!isset($_SESSION["user"])) {
             echo '<button class="dislike-button" onclick="dislikeMovie(' . $row['id'] . ')">Dislike</button>';
             echo '<span id="dislike-count-' . $row['id'] . '">0</span>';
             
-            $title = $row['title'];
-
-                if (isset($_SESSION["user"])) {
-                    echo '<form action="comment.php" method="POST">';
-                    echo '<input type="hidden" name="movie_id" value="' . $row['id'] . '">';
-                    echo '<textarea name="comment" placeholder="Add your comment"></textarea>';
-                    echo '<button type="submit">Post Comment</button>';
-                    echo '</form>';
-                } else {
-                    echo '<p><a href="signin.php">Log in</a> to post comments.</p>';
-                }
+           
                  echo '</div>';
                 echo '</div>';
          }
@@ -153,17 +143,17 @@ if (!isset($_SESSION["user"])) {
           echo '<button class="dislike-button" onclick="dislikeMovie(' . $row['id'] . ')">Dislike</button>';
           echo '<span id="dislike-count-' . $row['id'] . '">0</span>';
 
-          $title = $row['title'];
+          // $title = $row['title'];
 
-          if (isset($_SESSION["user"])) {
-              echo '<form action="showcomment.php" method="POST">';
-              echo '<input type="hidden" name="show_id" value="' . $row['id'] . '">';
-              echo '<textarea name="comment" placeholder="Add your comment"></textarea>';
-              echo '<button type="submit">Post Comment</button>';
-              echo '</form>';
-          } else {
-              echo '<p><a href="signin.php">Log in</a> to post comments.</p>';
-          }
+          // if (isset($_SESSION["user"])) {
+          //     echo '<form action="showcomment.php" method="POST">';
+          //     echo '<input type="hidden" name="show_id" value="' . $row['id'] . '">';
+          //     echo '<textarea name="comment" placeholder="Add your comment"></textarea>';
+          //     echo '<button type="submit">Post Comment</button>';
+          //     echo '</form>';
+          // } else {
+          //     echo '<p><a href="signin.php">Log in</a> to post comments.</p>';
+          // }
               echo '</div>';
               echo '</div>';
         }

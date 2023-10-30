@@ -45,7 +45,7 @@
             <div id="searchresult" class="search-results"> </div>
         </form>
         <div class="user-icons">
-            <a href="/CSE482/profile_landing.html"><ion-icon name="person-outline"></ion-icon></a>
+            <a href="/CSE482/home.php"><ion-icon name="person-outline"></ion-icon></a>
             <ion-icon name="bookmark-outline"></ion-icon>
             <!-- <a href="/CSE482/signin.php"><ion-icon name="log-in-outline"></ion-icon></a> -->
             <a href="pages/logout.php"><ion-icon name="log-out-outline"></ion-icon></a>
