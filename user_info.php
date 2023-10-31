@@ -11,7 +11,14 @@
 <body>
   <div class="top-panel">
     <a href="/CSE482/index.php" data-value="FLIXDB" id="logo">FLIXDB</a>
-    <ion-icon name="menu-outline" id="hb"></ion-icon>
+    <ion-icon name="menu-outline" id="hb" onclick="toggleMenu()"></ion-icon>
+    <div class="fullscreen-menu" id="menu">
+      <ul>
+        <li><a href="/CSE482/index.php">Home</a></li>
+        <li><a href="/CSE482/movies.php">Movies</a></li>
+        <li><a href="/CSE482/shows.php">TV Shows</a></li>
+      </ul>
+    </div>
     <form action="">
       <div class="search-bar">
         <input type="text" name="search" id="search" placeholder="search" />
@@ -22,7 +29,6 @@
     </form>
     <div class="user-icons">
       <a href="/CSE482/profile_landing.html"><ion-icon name="person-outline"></ion-icon></a>
-
       <a href="/signin.html"><ion-icon name="log-in-outline"></ion-icon></a>
     </div>
   </div>
@@ -35,7 +41,6 @@
         <th>Action</th>
       </tr>
       <?php
-
       require_once "database.php";
       $sql = "SELECT * FROM users";
       $result = mysqli_query($con, $sql);
@@ -53,14 +58,36 @@
           echo "</tr>";
         }
       }
-
       ?>
     </table>
   </div>
-
   <script src="/CSE482/JS/logo.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script src="/CSE482/JS/dropdown.js"></script>
+  <script src='/CSE482/JS/like_dislike.js'></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#lsearch").keyup(function() {
+        var input = $(this).val();
+        if (input != "") {
+          $.ajax({
+            url: "livesearch.php",
+            method: "POST",
+            data: {
+              input: input
+            },
+            success: function(data) {
+              $("#searchresult").html(data);
+            }
+          });
+        } else {
+          $("searchresult").css("display", "none");
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>

@@ -4,7 +4,6 @@ if (!isset($_SESSION["admin"])) {
   header("location: /CSE482/signin.php");
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +19,14 @@ if (!isset($_SESSION["admin"])) {
 <body>
   <div class="top-panel">
     <a href="/CSE482/index.php" data-value="FLIXDB" id="logo">FLIXDB</a>
-    <ion-icon name="menu-outline" id="hb"></ion-icon>
+    <ion-icon name="menu-outline" id="hb" onclick="toggleMenu()"></ion-icon>
+    <div class="fullscreen-menu" id="menu">
+      <ul>
+        <li><a href="/CSE482/index.php">Home</a></li>
+        <li><a href="/CSE482/movies.php">Movies</a></li>
+        <li><a href="/CSE482/shows.php">TV Shows</a></li>
+      </ul>
+    </div>
     <form action="adminprofile.php" method="POST">
       <div class="search-bar">
         <input type="text" name="search" id="lsearch" autocomplete="off" placeholder="search">
@@ -28,9 +34,6 @@ if (!isset($_SESSION["admin"])) {
       </div>
       <div id="searchresult"> </div>
     </form>
-    <!-- <div id="searchresult"> </div> -->
-
-
     <div class="user-icons">
       <ion-icon name="person-outline"></ion-icon>
       <ion-icon name="bookmark-outline"></ion-icon>
@@ -42,20 +45,16 @@ if (!isset($_SESSION["admin"])) {
     <p><?php echo $_SESSION['admin']; ?></p>
     <a href="/edit_profile.html" id="edit">Edit profile</a>
   </div>
-  <!-- <div class="profile">
-    <div class="wl">Your Watchlist</div>
-    <div class="rv">Your Reviews</div>
-  </div> -->
-  <!-- <a href="logout.php" class="btn btn-warning">logout </a> -->
-  <script src="logo.js"></script>
+  <script src="/CSE482/JS/logo.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script src="/CSE482/JS/dropdown.js"></script>
+  <script src='/CSE482/JS/like_dislike.js'></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script type="text/javascript">
     $(document).ready(function() {
       $("#lsearch").keyup(function() {
         var input = $(this).val();
-        // alert(input);
         if (input != "") {
           $.ajax({
             url: "livesearch.php",
@@ -63,11 +62,9 @@ if (!isset($_SESSION["admin"])) {
             data: {
               input: input
             },
-
             success: function(data) {
               $("#searchresult").html(data);
             }
-
           });
         } else {
           $("searchresult").css("display", "none");

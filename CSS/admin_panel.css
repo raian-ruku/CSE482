@@ -2,9 +2,6 @@
     body{
     width: 100%;}
 }
-    
-
-
 body{
 background-color: #1d1d1d;
 margin: 0px;
@@ -13,7 +10,6 @@ margin: 0px;
 display: flex;
 justify-content: center;
 }
-
 .top-panel{
 display: flex;
 justify-content:space-between;
@@ -22,7 +18,6 @@ margin-top: 0px;
 width: 100%;
 background-color: black;
 }
-
 .search-bar{
 position:relative;
 padding-top: 5px;
@@ -59,7 +54,6 @@ width: 200px;
 padding-top: 10px;
 padding-right: 50px;
 }
-
 #logo{
 color: #dadada;
 font-family: 'Space Mono', monospace;
@@ -86,7 +80,6 @@ margin-right: 30%;
 margin-left: 40%;
 margin-top: 5%;
 }
-
 img{
 height: 300px;
 width: 300px;
@@ -94,11 +87,9 @@ border-radius: 50%;
 display: flex;
 justify-content: center;
 }
-
 p{
 margin-left: 30%;
 }
-
 .links a{
 color: white;
 text-decoration: none;
@@ -107,7 +98,6 @@ margin-left: 15%;
 display: flex;
 flex-direction: column;
 }
-
 .links a:nth-child(1){
 border: 1px solid rgb(128, 124, 124);
 border-radius: 5px;
@@ -117,7 +107,6 @@ text-align: center;
 justify-content: center;
 background-color: rgb(71, 118, 118);
 }
-
 .links a:nth-child(2){
 border: 1px solid rgb(128, 124, 124);
 border-radius: 5px;
@@ -127,8 +116,6 @@ text-align: center;
 justify-content: center;
 background-color: #228B22;
 }
-
-
 .links a:nth-child(3){
 border: 1px solid rgb(128, 124, 124);
 border-radius: 5px;
@@ -138,7 +125,6 @@ text-align: center;
 justify-content: center;
 background-color: red;
 }
-
 .links a:nth-child(4){
 border: 1px solid rgb(128, 124, 124);
 border-radius: 5px;
@@ -147,4 +133,45 @@ height: 30px;
 text-align: center;
 justify-content: center;
 background-color: rgb(255, 204, 0);
+}
+#hb {
+  cursor: pointer;
+}
+.fullscreen-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1;
+  animation: fadeIn .3s ;
+}
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+.fullscreen-menu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.fullscreen-menu li {
+  padding: 20px;
+}
+.fullscreen-menu a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 24px;
+  display: block;
+  transition: background-color 0.3s;
+}
+.fullscreen-menu a:hover {
+  background-color: #333;
 }

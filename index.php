@@ -1,15 +1,6 @@
 <style>
   <?php include "/CSE482/CSS/index.css" ?>
 </style>
-
-<?php
-// session_start();
-// if (!isset($_SESSION["user"])) {
-//   header("location: signin.php");
-// }
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,14 +20,11 @@
     <ion-icon name="menu-outline" id="hb" onclick="toggleMenu()"></ion-icon>
     <div class="fullscreen-menu" id="menu">
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="pages/main.php">Movies</a></li>
-        <li><a href="#">TV Shows</a></li>
-        <li><a href="#">Genres</a></li>
-        <li><a href="#">Top Rated</a></li>
+        <li><a href="/CSE482/index.php">Home</a></li>
+        <li><a href="/CSE482/movies.php">Movies</a></li>
+        <li><a href="/CSE482/shows.php">TV Shows</a></li>
       </ul>
     </div>
-
     <form action="index.php">
       <div class="search-bar">
         <input type="text" name="search" id="lsearch" autocomplete="off" placeholder="search">
@@ -47,7 +35,6 @@
     <div class="user-icons">
       <a href="/CSE482/home.php"><ion-icon name="person-outline"></ion-icon></a>
       <ion-icon name="bookmark-outline"></ion-icon>
-      <!-- <a href="/CSE482/signin.php"><ion-icon name="log-in-outline"></ion-icon></a> -->
       <a href="logout.php"><ion-icon name="log-out-outline"></ion-icon></a>
     </div>
   </div>
@@ -62,7 +49,6 @@
       require_once "database.php";
       $sql = "SELECT * FROM addmovie WHERE trending = 1";
       $result = mysqli_query($con, $sql);
-
       if ($result && mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
           $movieName = $row['title'];
@@ -72,50 +58,40 @@
           $releaseDate = $row['release_date'];
           $rating = $row['rating'];
           $imageSrc = $row['poster'];
-
           echo '<div class="trending-card">';
-            echo  '<img src="' . $imageSrc . '" alt="' . $movieName . '" />';
-
-            echo'<div class="trending-card-info">';
-                  
-            echo'<a href=\'/CSE482/movie_details.php?movie_id=' . $row['id'] . '\'">' . $movieName . '</a>';
-            echo '<p>' . $actors . '</p>';
-            echo '<p>' . $director . '</p>';
-            echo '<p>' . $category . '</p>';
-            echo '<p>' . $releaseDate . '</p>';
-            echo '<p>' . $rating . '</p>';
-            echo '<button class="like-button" onclick="likeMovie(' . $row['id'] . ')">Like</button>';
-            echo '<span id="like-count-' . $row['id'] . '">0</span>';
-            echo '<button class="dislike-button" onclick="dislikeMovie(' . $row['id'] . ')">Dislike</button>';
-            echo '<span id="dislike-count-' . $row['id'] . '">0</span>';
-            
-           
-                 echo '</div>';
-                echo '</div>';
-         }
+          echo  '<img src="' . $imageSrc . '" alt="' . $movieName . '" />';
+          echo '<div class="trending-card-info">';
+          echo '<a href=\'/CSE482/movie_details.php?movie_id=' . $row['id'] . '\'">' . $movieName . '</a>';
+          echo '<p>' . $actors . '</p>';
+          echo '<p>' . $director . '</p>';
+          echo '<p>' . $category . '</p>';
+          echo '<p>' . $releaseDate . '</p>';
+          echo '<p>' . $rating . '</p>';
+          echo '<button class="like-button" onclick="likeMovie(' . $row['id'] . ')">Like</button>';
+          echo '<span id="like-count-' . $row['id'] . '">0</span>';
+          echo '<button class="dislike-button" onclick="dislikeMovie(' . $row['id'] . ')">Dislike</button>';
+          echo '<span id="dislike-count-' . $row['id'] . '">0</span>';
+          echo '</div>';
+          echo '</div>';
+        }
       } else {
         echo 'No movies found.';
       }
       ?>
     </div>
   </div>
-  <br> 
+  <br>
   <div class="trending2">
     <div class="tn2">
       <h2 class="horizontal-lines">Trending Shows</h2>
       <button onclick="window.location.href='/CSE482/trending_shows.php'">View All</button>
     </div>
     <br />
-
-
-
-
     <div class=" trendingcards">
       <?php
       require_once "database.php";
       $sql = "SELECT * FROM shows WHERE trending = 1";
       $result = mysqli_query($con, $sql);
-
       if ($result && mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
           $movieName = $row['title'];
@@ -125,13 +101,9 @@
           $releaseDate = $row['release_date'];
           $rating = $row['rating'];
           $imageSrc = $row['poster'];
-
           echo '<div class="trending-card">';
-
           echo '<img src="' . $imageSrc . '" alt="' . $movieName . '" />';
-
           echo '<div class="trending-card-info">';
-                  
           echo '<a alt="' . $movieName . '" href=\'/CSE482/show_details.php?show_id=' . $row['id'] . '\'">' . $movieName . '</a>';
           echo '<p>' . $actors . '</p>';
           echo '<p>' . $director . '</p>';
@@ -142,20 +114,8 @@
           echo '<span id="like-count-' . $row['id'] . '">0</span>';
           echo '<button class="dislike-button" onclick="dislikeMovie(' . $row['id'] . ')">Dislike</button>';
           echo '<span id="dislike-count-' . $row['id'] . '">0</span>';
-
-          // $title = $row['title'];
-
-          // if (isset($_SESSION["user"])) {
-          //     echo '<form action="showcomment.php" method="POST">';
-          //     echo '<input type="hidden" name="show_id" value="' . $row['id'] . '">';
-          //     echo '<textarea name="comment" placeholder="Add your comment"></textarea>';
-          //     echo '<button type="submit">Post Comment</button>';
-          //     echo '</form>';
-          // } else {
-          //     echo '<p><a href="signin.php">Log in</a> to post comments.</p>';
-          // }
-              echo '</div>';
-              echo '</div>';
+          echo '</div>';
+          echo '</div>';
         }
       } else {
         echo 'No movies found.';
@@ -163,21 +123,16 @@
       ?>
     </div>
   </div>
-
-
-  <!-- <a href="logout.php" class="btn btn-warning">logout </a> -->
   <script src="/CSE482/JS/logo.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <script src="/CSE482/JS/dropdown.js"></script>
   <script src='/CSE482/JS/like_dislike.js'></script>
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script type="text/javascript">
     $(document).ready(function() {
       $("#lsearch").keyup(function() {
         var input = $(this).val();
-        // alert(input);
         if (input != "") {
           $.ajax({
             url: "livesearch.php",
@@ -185,11 +140,9 @@
             data: {
               input: input
             },
-
             success: function(data) {
               $("#searchresult").html(data);
             }
-
           });
         } else {
           $("searchresult").css("display", "none");
@@ -197,7 +150,6 @@
       });
     });
   </script>
-
 </body>
 
 </html>

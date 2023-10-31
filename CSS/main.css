@@ -1,45 +1,31 @@
-/* CSS styles for movie cards */
 .movie-card-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 10px; /* Adjust spacing as needed */
+    margin: 10px;
 }
-
 .movie-card {
-    /* width: 220px;
-    margin: 20px;
+    width: calc(25% - 20px);
+    margin: 10px;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    text-align: center; */
-    width: calc(25% - 20px); /* Adjust card width and spacing as needed */
-    margin: 10px; /* Adjust spacing as needed */
-    padding: 10px;
-    border: 1px solid #ddd; /* Add border for separation */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add shadow for a card effect */
+    border: 1px solid #ddd;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     text-align: center;
 }
-
 .movie-card img {
     max-width: 100%;
     height: auto;
     margin-bottom: 10px;
 }
-
 .movie-card h2 {
     font-size: 1.2rem;
     margin: 0;
     color: aqua;
 }
-
 .movie-card p {
     font-size: 0.9rem;
     color: tomato;
 }
-
 .movie-card a {
     display: block;
     background-color: #007bff;
@@ -49,7 +35,47 @@
     border-radius: 5px;
     margin-top: 10px;
 }
-
 .movie-card a:hover {
     background-color: #0056b3;
+}
+#hb {
+  cursor: pointer;
+}
+.fullscreen-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1;
+  animation: fadeIn .3s ;
+}
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+.fullscreen-menu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.fullscreen-menu li {
+  padding: 20px;
+}
+.fullscreen-menu a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 24px;
+  display: block;
+  transition: background-color 0.3s;
+}
+.fullscreen-menu a:hover {
+  background-color: #333;
 }

@@ -2,14 +2,9 @@
 include("database.php");
 if (isset($_POST['input'])) {
     $input = $_POST['input'];
-
     $query = "SELECT * FROM addmovie where title LIKE '{$input}%' UNION SELECT * FROM shows where title LIKE '{$input}%'";
     $result = mysqli_query($con, $query);
-
-
-
     if (mysqli_num_rows($result) > 0) { ?>
-        <!-- echo '<ul class="search-results">'; -->
         <?php
         while ($row = mysqli_fetch_assoc($result)) {
             $id = $row['id'];
@@ -36,9 +31,6 @@ if (isset($_POST['input'])) {
         }
         echo '</ul>';
         ?>
-
-
-
 <?php
     } else {
         echo "<h6 class='text-danger text-center mt-3' > No Data Found </h6>";

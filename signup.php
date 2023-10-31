@@ -4,7 +4,6 @@ if (isset($_SESSION["user"])) {
   header("location: home.php");
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,12 +16,17 @@ if (isset($_SESSION["user"])) {
   <link rel="stylesheet" href="/CSE482/CSS/siginin.css">
 </head>
 
-
-
 <body>
   <div class="top-panel">
     <a href="/index.html" data-value="FLIXDB" id="logo">FLIXDB</a>
-    <ion-icon name="menu-outline" id="hb"></ion-icon>
+    <ion-icon name="menu-outline" id="hb" onclick="toggleMenu()"></ion-icon>
+    <div class="fullscreen-menu" id="menu">
+      <ul>
+        <li><a href="/CSE482/index.php">Home</a></li>
+        <li><a href="/CSE482/movies.php">Movies</a></li>
+        <li><a href="/CSE482/shows.php">TV Shows</a></li>
+      </ul>
+    </div>
     <form action="">
       <div class="search-bar">
         <input type="text" name="search" id="search" placeholder="search" />
@@ -35,8 +39,6 @@ if (isset($_SESSION["user"])) {
       <ion-icon name="log-in-outline"></ion-icon>
     </div>
   </div>
-
-
   <div class="signin-form">
     <?php
     if (isset($_POST["submit"])) {
@@ -46,7 +48,6 @@ if (isset($_SESSION["user"])) {
       $repeatpassword = $_POST["repeat_password"];
       $errors = array();
       $passwordhash = password_hash($password, PASSWORD_DEFAULT);
-
       if (empty($username) or empty($email) or empty($password) or empty($repeatpassword)) {
         array_push($errors, "All fields are required");
       }
@@ -65,15 +66,12 @@ if (isset($_SESSION["user"])) {
         }
       } else {
         require_once "database.php";
-
         $query = mysqli_query($con, "SELECT * FROM users WHERE email='$email'");
         $numrows = mysqli_num_rows($query);
-
         if ($numrows == 0) {
           $sql = "INSERT INTO users(u_name,email,password) 
                       VALUES('$username','$email','$passwordhash')";
           $result = mysqli_query($con, $sql);
-
           if ($result) {
             echo "<script>
              Swal.fire({
@@ -103,16 +101,12 @@ if (isset($_SESSION["user"])) {
             showConfirmButton: true,
             confirmButtonText: 'okay',
             confirmButtonColor: 'red',
-            
-            
           });
           </script>";
         }
       }
     }
     ?>
-
-
     <form action="signup.php" method="post" id="form">
       <p data-value="WELCOME TO FLIXDB" id="welcome">WELCOME TO FLIXDB</p>
       <h2>Registration Form</h2>
@@ -131,11 +125,33 @@ if (isset($_SESSION["user"])) {
         <p>already have an account? <a href="signin.php">Sign In</a></p>
       </form>
   </div>
-
   <script src="/CSE482/JS/logo.js"></script>
-  <script src="/JS/welcome.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script src="/CSE482/JS/dropdown.js"></script>
+  <script src='/CSE482/JS/like_dislike.js'></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#lsearch").keyup(function() {
+        var input = $(this).val();
+        if (input != "") {
+          $.ajax({
+            url: "livesearch.php",
+            method: "POST",
+            data: {
+              input: input
+            },
+            success: function(data) {
+              $("#searchresult").html(data);
+            }
+          });
+        } else {
+          $("searchresult").css("display", "none");
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>

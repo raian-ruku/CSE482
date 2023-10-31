@@ -15,7 +15,14 @@
 <body>
   <div class="top-panel">
     <a href="/CSE482/index.php" data-value="FLIXDB" id="logo">FLIXDB</a>
-    <ion-icon name="menu-outline" id="hb"></ion-icon>
+    <ion-icon name="menu-outline" id="hb" onclick="toggleMenu()"></ion-icon>
+    <div class="fullscreen-menu" id="menu">
+      <ul>
+        <li><a href="/CSE482/index.php">Home</a></li>
+        <li><a href="/CSE482/movies.php">Movies</a></li>
+        <li><a href="/CSE482/shows.php">TV Shows</a></li>
+      </ul>
+    </div>
     <form action="">
       <div class="search-bar">
         <input type="text" name="search" id="lsearch" autocomplete="off" placeholder="search">
@@ -25,12 +32,10 @@
     </form>
     <div class="user-icons">
       <a href="/CSE482/profile_landing.html"><ion-icon name="person-outline"></ion-icon></a>
-
       <a href="/signin.html"><ion-icon name="log-in-outline"></ion-icon></a>
     </div>
   </div>
   <div class="add">
-
     <h1>Add Movies/Shows</h1><br>
     <form action="add.php" id="add" method="post">
       <label for="category">Category</label>
@@ -65,10 +70,8 @@
       <textarea name="description" id="description" cols="30" rows="10" placeholder="Description"></textarea>
       <label for="trailer_url">Trailer URL</label>
       <input type="text" name="trailer" id="year" placeholder="trailer url" />
-
       <label for="poster">Poster</label>
       <input type="text" name="poster" id="poster" placeholder="Poster link" oninput="showPosterPreview()">
-
       <label for="image">Image</label>
       <input type="text" name="image" id="image" placeholder="Add another image" oninput="showImagePreview()">
       <div class="image-view">
@@ -89,15 +92,10 @@
         <input type="radio" name="trending" id="trending" value="0">
       </span>
       <input type="submit" value="Add" name="submit">
-
     </form>
   </div>
-
   </div>
-
-
   <?php
-
   if (isset($_POST["submit"])) {
     $category = $_POST["category"];
     $title = $_POST["title"];
@@ -112,8 +110,6 @@
     $image = $_POST["image"];
     $trailer = $_POST["trailer"];
     $trending = $_POST["trending"];
-
-
     if (empty($category) or empty($title) or empty($genre) or empty($year) or empty($cast) or empty($director) or empty($release_date) or empty($rating) or empty($trailer) or empty($description) or empty($image) or empty($poster)) {
       echo "<script>
           Swal.fire({
@@ -122,24 +118,16 @@
             showConfirmButton: true,
             confirmButtonText: 'okay',
             confirmButtonColor: 'orange',
-            
-            
           });
           </script>";
     } else {
-
       require_once "database.php";
       $table = ($category === "movie") ? "addmovie" : "shows";
       $query = mysqli_query($con, "SELECT * FROM $table WHERE title='$title'");
       $numrows = mysqli_num_rows($query);
-
       if ($numrows == 0) {
-
         $sql = "INSERT INTO $table (category,title, genre, year, rating, description, trailer_url,  poster, image1, cast, director, release_date, trending) VALUES ('$category','$title','$genre', '$year', '$rating','$description','$trailer','$poster', '$image','$cast','$director','$release_date', $trending)";
-
         $result = mysqli_query($con, $sql);
-
-
         if ($result) {
           echo "<script>
           Swal.fire({
@@ -148,8 +136,6 @@
             showConfirmButton: true,
             confirmButtonText: 'okay',
             confirmButtonColor: 'green',
-            
-            
           });
           </script>";
         } else {
@@ -160,8 +146,6 @@
             showConfirmButton: true,
             confirmButtonText: 'okay',
             confirmButtonColor: 'red',
-            
-            
           });
           </script>";
         }
@@ -174,30 +158,24 @@
             showConfirmButton: true,
             confirmButtonText: 'okay',
             confirmButtonColor: 'red',
-            
-            
           });
           </script>";
       }
-
       mysqli_close($con);
     }
   }
-
   ?>
-
-
   <script src="/CSE482/JS/logo.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-  <script src="/CSE482/JS/image_preview.js"></script>
-
+  <script src="/CSE482/JS/dropdown.js"></script>
+  <script src='/CSE482/JS/like_dislike.js'></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script type="text/javascript">
     $(document).ready(function() {
       $("#lsearch").keyup(function() {
         var input = $(this).val();
-        // alert(input);
+
         if (input != "") {
           $.ajax({
             url: "livesearch.php",
@@ -205,11 +183,9 @@
             data: {
               input: input
             },
-
             success: function(data) {
               $("#searchresult").html(data);
             }
-
           });
         } else {
           $("searchresult").css("display", "none");

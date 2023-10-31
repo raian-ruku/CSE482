@@ -2,9 +2,6 @@
     body{
     width: 100%;}
 }
-    
-
-
 body{
 background-color: #1d1d1d;
 margin: 0px;
@@ -13,7 +10,6 @@ margin: 0px;
 display: flex;
 justify-content: center;
 }
-
 .top-panel{
 display: flex;
 justify-content:space-between;
@@ -22,12 +18,10 @@ margin-top: 0px;
 width: 100%;
 background-color: black;
 }
-
 .search-bar{
 position:relative;
 padding-top: 5px;
 padding-bottom: 10px;
-
 }
 .search-bar input{
 padding-left: 10px;
@@ -53,7 +47,6 @@ border: none;
 position: absolute;
 right: 20px;
 }
-
 .user-icons{
 display: flex;
 justify-content: space-between;
@@ -61,7 +54,6 @@ width: 200px;
 padding-top: 10px;
 padding-right: 50px;
 }
-
 #logo{
 color: #dadada;
 font-family: 'Space Mono', monospace;
@@ -94,27 +86,23 @@ box-shadow: #474747 2px 0px 10px;
 padding-left: 10px;
 text-align: left;
 color: white;
-font-family: 'Roboto', monospace;
+font-family: 'Space Mono', monospace;
 }
 .trending-card img{
     height: 400px;
     width: 100%;
    overflow: hidden;
     border-radius: 15px 15px 0px 0px;
- 
 }
-
 .trendingcards a {
 text-decoration: none;
 }
 .trendingcards a:visited {
 color: #dadada;
 }
-
-
 .horizontal-lines{
 color: white;
-font-family: "Roboto", monospace;
+font-family: "Space Mono", monospace;
 position: relative;
 margin-left: 10px;
 margin-top: 2%;
@@ -135,31 +123,25 @@ top: 12%;
 background-color: transparent;
 border: none;
 color: white;
-font-family: "Roboto", monospace;
+font-family: "Space Mono", monospace;
 font-size: 20px;
 }
-
 .tn button:hover{
 color: rgb(255, 218, 144);
 }
-
 #searchresult{
   color: white;
 }
 #tid{
   color:tomato;
 }
-
 a{
 font-size: 20px;
 }
-/* Add this CSS to your stylesheet or in a <style> tag in your HTML */
-
 .search-results {
   list-style: none;
   padding: 0;
 }
-
 .search-result {
   display: flex;
   margin: 20px 0;
@@ -167,34 +149,25 @@ font-size: 20px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
 .search-result-details {
   flex: 1;
   padding: 10px;
 }
-
 .search-result-details h3 {
   margin: 0;
 }
-
 .search-result-image {
   flex: 1;
   max-width: 150px;
   overflow: hidden;
 }
-
 .search-result-image img {
   width: 100%;
   height: auto;
 }
-
-
-
 #hb {
   cursor: pointer;
 }
-
-
 .fullscreen-menu {
   display: none;
   position: fixed;
@@ -206,13 +179,10 @@ font-size: 20px;
   z-index: 1;
   animation: fadeIn .3s ;
 }
-
 @keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
 }
-
-
 .fullscreen-menu ul {
   list-style-type: none;
   padding: 0;
@@ -223,11 +193,9 @@ font-size: 20px;
   transform: translate(-50%, -50%);
   text-align: center;
 }
-
 .fullscreen-menu li {
   padding: 20px;
 }
-
 .fullscreen-menu a {
   text-decoration: none;
   color: #fff;
@@ -235,51 +203,65 @@ font-size: 20px;
   display: block;
   transition: background-color 0.3s;
 }
-
 .fullscreen-menu a:hover {
   background-color: #333;
-  
 }
-
+h1{
+font-family: 'Space Mono', monospace;
+color: white;
+margin: 10px;
+}
 table{
 color:white
 }
-
-
 .movie-table {
   display: flex;
   align-items: center;
-  margin: 10px;
+  margin: 10px ;
   background-color: rgb(22, 22, 22);
   border-radius: 15px;
-  width: 100%;
+  width: 95%;
   justify-content: space-between;
   box-shadow: #474747 2px 0px 10px;
 }
-
 .movie-details {
   padding-left: 10px;
   text-align: left;
   color: white;
-  font-family: 'Roboto', monospace;
+  font-family: 'Space Mono', monospace;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
-
 table img {
   height: 400px;
   width: 400px;
   overflow: hidden;
   border-radius: 15px 0 0 15px;
 }
-
 .label {
-  font-weight: bold;
+  font-size: 30px;
 }
-
-.like-button,
-.dislike-button {
-  margin-top: 10px;
+.movie-table a {
+  text-decoration: none;
+  font-size: 40px;
+  color: white;
 }
-
+.movie-table a:hover{
+  color: rgb(255, 218, 144);
+}
+.genre-filter {
+color: white;
+font-family: 'Space Mono', monospace;
+display: flex;
+justify-content: end;
+margin-right: 20px;
+}
+select {
+color: white;
+background-color: transparent;}
+td {
+margin-left: 30px;
+margin-top: 30px;
+font-size: 30px;
+}

@@ -2,9 +2,6 @@
     body{
     width: 100%;}
 }
-    
-
-
 body{
 background-color: #1d1d1d;
 margin: 0px;
@@ -15,7 +12,6 @@ font-family: 'Space Mono', monospace;
 display: flex;
 justify-content: center;
 }
-
 .top-panel{
 display: flex;
 justify-content:space-between;
@@ -24,12 +20,10 @@ margin-top: 0px;
 width: 100%;
 background-color: black;
 }
-
 .search-bar{
 position:relative;
 padding-top: 5px;
 padding-bottom: 10px;
-
 }
 .search-bar input{
 padding-left: 10px;
@@ -62,7 +56,6 @@ width: 200px;
 padding-top: 10px;
 padding-right: 50px;
 }
-
 #logo{
 color: #dadada;
 font-family: 'Space Mono', monospace;
@@ -89,7 +82,6 @@ font-size: 25px;
 #hb{
 padding-top: 10px;
 }
-
 .movie{
 display: flex;
 flex-direction: column;
@@ -98,22 +90,18 @@ padding-bottom: 20px;
 font-family: 'Space Mono', monospace;
 color: white;
 }
-
 .sd{
 display: flex;
 flex-direction: row;
 justify-content: space-between;
 width: 80%;}
-
 .rp{
 display: flex;
 float: left;
 flex-direction: row;
 justify-content: space-between;
 width: 20%;
-
 }
-
 .movie img{
 height: 500px;
 width: 80%;
@@ -122,27 +110,30 @@ width: 80%;
     margin: 2%;
     width: 100%;
 }
-.review{
+#p1{
+font-size: 20px;
+}
+.review-section{
 display: flex;
 flex-direction: row;
 }
-.review-items:nth-child(2){
-padding-left: 15px;
-
+.review {
+    margin-bottom: 10px;
 }
-
-.review-items:nth-child(3){
-padding-left: 15px;
+.review-items {
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+    width: 100%;
 }
-
-
-
-.review img{
-border-radius: 50%;
-height: 50px;
-width: 50px;
+.review-items p {
+    margin: 0;
+    padding: 5px;
+    font-size: 17px;
 }
-/* Add styles for minimalistic buttons */
+textarea{
+resize: none;
+}
 .carousel-btn {
   background: none;
   border: none;
@@ -159,20 +150,15 @@ width: 50px;
   opacity: 0.7;
   transition: opacity 0.2s ease;
 }
-
 .carousel-btn:hover {
   opacity: 1;
 }
-
 .prev-btn {
   float: left;
 }
-
 .next-btn {
   float: right;
 }
-
-/* Add these styles for the buttons */
 .carousel-btn {
   background: transparent;
   border: none;
@@ -185,18 +171,22 @@ width: 50px;
   transition: background 0.3s;
   z-index: 1;
 }
-
 .carousel-btn:hover {
   background: rgba(0, 0, 0, 0.9);
 }
-
-
-/* Styles for the menu icon */
+.image-carousel img{
+height: 700px;
+width: 700px;
+margin-left: 25%;
+}
+iframe{
+height: 700px;
+width: 700px;
+margin-left: 25%;
+}
 #hb {
   cursor: pointer;
 }
-
-/* Fullscreen menu styles */
 .fullscreen-menu {
   display: none;
   position: fixed;
@@ -204,17 +194,14 @@ width: 50px;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.9); /* Semi-transparent black background */
+  background: rgba(0, 0, 0, 0.9);
   z-index: 1;
   animation: fadeIn .3s ;
 }
-
 @keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
 }
-
-
 .fullscreen-menu ul {
   list-style-type: none;
   padding: 0;
@@ -225,11 +212,9 @@ width: 50px;
   transform: translate(-50%, -50%);
   text-align: center;
 }
-
 .fullscreen-menu li {
   padding: 20px;
 }
-
 .fullscreen-menu a {
   text-decoration: none;
   color: #fff;
@@ -237,16 +222,12 @@ width: 50px;
   display: block;
   transition: background-color 0.3s;
 }
-
 .fullscreen-menu a:hover {
   background-color: #333;
-  
 }
-
 .reviews textarea {
   height: 50px;
 }
-
 .reviews button[type="submit"] {
   background-color: #007bff;
   color: #fff;
@@ -254,7 +235,15 @@ width: 50px;
   border-radius: 3px;
   cursor: pointer;
 }
-
 .reviews button[type="submit"]:hover {
   background-color: #0056b3;
+}
+.sd p{
+font-size: 30px;
+}
+.rp p{
+font-size: 25px;
+}
+#rd{
+font-size: 20px;
 }
