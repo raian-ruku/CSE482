@@ -3,10 +3,10 @@
 </style>
 
 <?php
-session_start();
-if (!isset($_SESSION["user"])) {
-  header("location: signin.php");
-}
+// session_start();
+// if (!isset($_SESSION["user"])) {
+//   header("location: signin.php");
+// }
 ?>
 
 

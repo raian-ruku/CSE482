@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION["user"])) {
-  header("location: /CSE482/admin_panel.php");
+  header("location: /CSE482/home.php");
 }
 ?>
 
@@ -19,7 +19,7 @@ if (isset($_SESSION["user"])) {
 
 <body>
   <div class="top-panel">
-    <a href="/CSE482/CSE482/index.php" data-value="FLIXDB" id="logo">FLIXDB</a>
+    <a href="/CSE482/index.php" data-value="FLIXDB" id="logo">FLIXDB</a>
     <ion-icon name="menu-outline" id="hb"></ion-icon>
     <form action="">
       <div class="search-bar">
@@ -51,14 +51,11 @@ if (isset($_SESSION["user"])) {
           setcookie("remember_username", $username, time() + 3600 * 24 * 30, "/");
           session_start();
           $_SESSION["user"] = $username;
-          header("location: /CSE482/admin_panel.php");
+          header("location: /CSE482/home.php");
           die();
         } else {
           echo "<div class='alert alert-success'>password doesn't match.</div>";
         }
-      // } else {
-      //   echo "<div class='alert alert-success'>password doesn't match.</div>";
-      // }
       
     } else {
       echo "<div class='alert alert-success'>incorrect username </div>";
@@ -87,6 +84,7 @@ if (isset($_SESSION["user"])) {
         <input type="submit" name="login" value="Login">
         <a href="">Forgot Password?</a>
         <p> Don't have an account?<a href="signup.php">Sign Up</a></p>
+        <a href="adminsignin.php">Are you admin? click here to Sign in</a>
       </form>
   </div>
 

@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION["admin"])) {
+  header("location: /CSE482/signin.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +31,7 @@
       </div>
     </form>
     <div class="user-icons">
-      <a href="/CSE482/profile_landing.html"><ion-icon name="person-outline"></ion-icon></a>
+      <a href="/CSE482/adminprofile.php"><ion-icon name="person-outline"></ion-icon></a>
 
       <a href="/signin.html"><ion-icon name="log-in-outline"></ion-icon></a>
     </div>

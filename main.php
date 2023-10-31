@@ -46,7 +46,8 @@ if (!isset($_SESSION["user"])) {
         </div>
     </div>
 
-
+ <h2 style="color: tomato;"> Movies </h2>
+ <hr class="horizontal-lines">
     <div class="movie-card-container">
         <?php
         require_once 'database.php';
@@ -112,55 +113,111 @@ if (!isset($_SESSION["user"])) {
             echo 'No movies found.';
         }
 
+        // mysqli_close($con);
+        ?>
+    </div>
+
+    <h2 style="color: tomato;"> Shows </h2>
+    <hr class="horizontal-lines">
+    <div class="movie-card-container">
+        <?php
+        require_once 'database.php';
+
+        $query = "SELECT * FROM shows";
+        $result = mysqli_query($con, $query);
+
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $title = $row['title'];
+                $category = $row['category'];
+                $description = $row['description'];
+                $genre = $row['genre'];
+                $image = $row['poster'];
+
+                $trailer = $row['trailer_url'];
+
+                $imageType = 'image/jpeg';
+                $imageExtension = strtolower(pathinfo($title, PATHINFO_EXTENSION));
+                if ($imageExtension == 'png') {
+                    $imageType = 'image/png';
+                }
+
+                $imageBase = base64_encode($image);
+
+
+                // Display movie poster, title, description, genre, and a "View Details" link
+                echo '<div class="movie-card">';
+               // echo '<img src="data:' . $imageType . ';base64,' . $imageBase . '" alt="' . $title . '">';
+                //echo '<img src="data:image/JPG;base64,' . $imageBase . '" alt="' . $title . '">';
+                 echo '<img src="' . $image . '" alt="' . $title . '">';
+                echo '<h2>' . $title . '</h2>';
+                echo '<p>' . $description . '</p>';
+                echo '<p>Genre: ' . $genre . '</p>';
+                echo '<button class="watch-trailer-button" onclick="showTrailer(\'' . $trailer . '\')">Watch Trailer</button>';
+                echo '<div class="like-dislike">';
+                echo '<button class="like-button" onclick="likeMovie(\'' . $title . '\')">Like</button>';
+                echo '<span id="like-count-' . $title . '">0</span>';
+                echo '<button class="dislike-button" onclick="dislikeMovie(\'' . $title . '\')">Dislike</button>';
+                echo '<span id="dislike-count-' . $title . '">0</span>';
+
+                // echo '<div class="comment-section">';
+                // echo '<h3>Comments:</h3>';
+                // echo '<div class="comments">';
+                $title = $row['title'];
+
+                if (isset($_SESSION["user"])) {
+                    echo '<form action="showcomment.php" method="POST">';
+                    echo '<input type="hidden" name="movie_id" value="' . $row['id'] . '">';
+                    echo '<textarea name="comment" placeholder="Add your comment"></textarea>';
+                    echo '<button type="submit">Post Comment</button>';
+                    echo '</form>';
+                } else {
+                    echo '<p><a href="signin.php">Log in</a> to post comments.</p>';
+                }
+
+                echo '</div>';
+                // echo '<a href="' . $trailer . '" target="_blank">Watch Trailer</a>';
+                //echo '<a href=" " target="_blank">View Details</a>'; 
+                echo '</div>';
+            }
+        } else {
+            echo 'No movies found.';
+        }
+
         mysqli_close($con);
         ?>
     </div>
 
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <iframe id="videoFrame" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
-        </div>
-    </div>
 
-    <script>
-        function showTrailer(trailer_url) {
 
-            var modal = document.getElementById("myModal");
-            var videoFrame = document.getElementById("videoFrame");
-            videoFrame.src = trailer_url;
-            modal.style.display = "block";
-        }
-
-        function closeModal() {
-
-            var modal = document.getElementById("myModal");
-            var videoFrame = document.getElementById("videoFrame");
-            videoFrame.src = "";
-            modal.style.display = "none";
-        }
-
-        var likes = {};
-        var dislikes = {};
-        //var ratings = {}; 
-
-        function likeMovie(title) {
-            if (!likes[title]) {
-                likes[title] = 0;
-            }
-            likes[title]++;
-            document.getElementById("like-count-" + title).textContent = likes[title];
-        }
-
-        function dislikeMovie(title) {
-            if (!dislikes[title]) {
-                dislikes[title] = 0;
-            }
-            dislikes[title]++;
-            document.getElementById("dislike-count-" + title).textContent = dislikes[title];
-        }
-    </script>
     <a href="logout.php" class="btn btn-warning">logout </a>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#lsearch").keyup(function() {
+        var input = $(this).val();
+        // alert(input);
+        if (input != "") {
+          $.ajax({
+            url: "livesearch.php",
+            method: "POST",
+            data: {
+              input: input
+            },
+
+            success: function(data) {
+              $("#searchresult").html(data);
+            }
+
+          });
+        } else {
+          $("searchresult").css("display", "none");
+        }
+      });
+    });
+  </script>
+
 
 </body>
 

@@ -7,9 +7,9 @@
 
 .movie-card {
     
-    width: calc(15% - 18px); 
+    width: calc(20% - 20px); 
     margin: 10px; 
-    padding: 10px;
+    padding: 20px;
     border: 1px solid #ddd; 
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); 
     text-align: center;
@@ -98,6 +98,22 @@
     background-color: #0056b3;
 }
 
+.horizontal-lines{
+    color: white;
+    font-family: "Roboto", monospace;
+    position: relative;
+    margin-left: 10px;
+    margin-top: 2%;
+    }
+    .horizontal-lines::after{
+    content: "";
+    height: 1px;
+    width: 70%;
+    background-color: rgb(49, 49, 49);
+    position: absolute;
+    margin-left: 20px;
+    top: 50%;
+    }
 
 
 @media screen and (max-width: 768px) {
