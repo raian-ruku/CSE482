@@ -85,7 +85,7 @@ if (isset($_SESSION["user"])) {
             confirmButtonColor: 'rgb(71, 221, 196)',
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = '/CSE482/signin.php'; // Redirect to the home page
+                    window.location.href = '/CSE482/signin.php';
                 }
             });
             </script>";
