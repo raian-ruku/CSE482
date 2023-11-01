@@ -47,7 +47,7 @@
             $movieName = $row['title'];
             $actors = $row['cast'];
             $director = $row['director'];
-            $category = $row['category'];
+            $category = $row['genre'];
             $releaseDate = $row['release_date'];
             $rating = $row['rating'];
             $imageSrc = $row['poster'];
@@ -67,7 +67,7 @@
             <td>' . $director . '</td>
           </tr>
           <tr>
-            <td class="label">Category:</td>
+            <td class="label">Genre:</td>
             <td>' . $category . '</td>
           </tr>
           <tr>
