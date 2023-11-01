@@ -37,7 +37,7 @@
             <a href="pages/logout.php"><ion-icon name="log-out-outline"></ion-icon></a>
         </div>
     </div>
-    <h1>TRENDING MOVIES</h1>
+    <h1>ALL MOVIES</h1>
     <div class="genre-filter">
         <label for="genreSelect">Filter by Genre:</label>
         <select id="genreSelect">
