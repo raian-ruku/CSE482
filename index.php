@@ -62,11 +62,11 @@
           echo  '<img src="' . $imageSrc . '" alt="' . $movieName . '" />';
           echo '<div class="trending-card-info">';
           echo '<a href=\'/CSE482/movie_details.php?movie_id=' . $row['id'] . '\'">' . $movieName . '</a>';
-          echo '<p>' . $actors . '</p>';
-          echo '<p>' . $director . '</p>';
-          echo '<p>' . $category . '</p>';
-          echo '<p>' . $releaseDate . '</p>';
-          echo '<p>' . $rating . '</p>';
+          echo '<p> Cast: ' . $actors . '</p>';
+          echo '<p> Director: ' . $director . '</p>';
+
+          echo '<p> Release Date: ' . $releaseDate . '</p>';
+          echo '<p> Rating: ' . $rating . '</p>';
           echo '<button class="like-button" onclick="likeMovie(' . $row['id'] . ')">Like</button>';
           echo '<span id="like-count-' . $row['id'] . '">0</span>';
           echo '<button class="dislike-button" onclick="dislikeMovie(' . $row['id'] . ')">Dislike</button>';
@@ -105,11 +105,11 @@
           echo '<img src="' . $imageSrc . '" alt="' . $movieName . '" />';
           echo '<div class="trending-card-info">';
           echo '<a alt="' . $movieName . '" href=\'/CSE482/show_details.php?show_id=' . $row['id'] . '\'">' . $movieName . '</a>';
-          echo '<p>' . $actors . '</p>';
-          echo '<p>' . $director . '</p>';
-          echo '<p>' . $category . '</p>';
-          echo '<p>' . $releaseDate . '</p>';
-          echo '<p>' . $rating . '</p>';
+          echo '<p> Cast: ' . $actors . '</p>';
+          echo '<p> Director: ' . $director . '</p>';
+
+          echo '<p> Release Date: ' . $releaseDate . '</p>';
+          echo '<p> Rating ' . $rating . '</p>';
           echo '<button class="like-button" onclick="likeMovie(' . $row['id'] . ')">Like</button>';
           echo '<span id="like-count-' . $row['id'] . '">0</span>';
           echo '<button class="dislike-button" onclick="dislikeMovie(' . $row['id'] . ')">Dislike</button>';

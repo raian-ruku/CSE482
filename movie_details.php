@@ -60,8 +60,8 @@ error_reporting(E_ALL);
           $movieName = $row['title'];
           $rating = $row['rating'];
           $releaseDate = $row['release_date'];
-          $category = $row['category'];
-          $stars = $row['cast'];
+          $genre = $row['genre'];
+          $cast = $row['cast'];
           $director = $row['director'];
           $description = $row['description'];
           $poster = $row['poster'];
@@ -81,8 +81,8 @@ error_reporting(E_ALL);
                             <img class="carousel-image" src="' . $image . '" alt="' . $movieName . '">
                             <button class="carousel-btn next-btn" onclick="nextImage()">&gt;</button>
                         </div>
-                        <p id="rd">Category: ' . $category . '</p>
-                        <p id="rd">Stars: ' . $stars . '</p>
+                        <p id="rd">Genre: ' . $genre . '</p>
+                        <p id="rd">Cast: ' . $cast . '</p>
                         <p id="rd">Director: ' . $director . '</p>
                         <p id="rd">Description: ' . $description . '</p>';
         } else {
