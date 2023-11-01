@@ -87,10 +87,7 @@
             <td class="label">Genre:</td>
             <td>' . $genre . '</td>
           </tr>
-          <tr>
-            <td class="label">Category:</td>
-            <td>' . $category . '</td>
-          </tr>
+          
           <tr>
             <td class="label">Release Date:</td>
             <td>' . $releaseDate . '</td>
